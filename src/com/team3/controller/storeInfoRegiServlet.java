@@ -1,9 +1,9 @@
-package com.team3.controller;
 
 
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -54,7 +54,19 @@ public class storeInfoRegiServlet extends HttpServlet {
 		sVo.setParking_detail(store_parking_etc);
 		
 		int result =  sDao.insertStoreInfo(sVo);
-		System.out.println("insertStoreInfo's result : " + result);
+
+		if(result == 1) {
+			System.out.println("insertStoreInfo's result(등록 성공) : " + result);
+
+			RequestDispatcher dispatcher = request.getRequestDispatcher("store_info_mng.jsp");
+			dispatcher.forward(request, response);
+		}else{
+			System.out.println("insertStoreInfo's result(등록 실퍠) : " + result);
+			
+			RequestDispatcher dispatcher = request.getRequestDispatcher("store_info_regi.jsp");
+			dispatcher.forward(request, response);
+		}
+			
 
 	}
 
