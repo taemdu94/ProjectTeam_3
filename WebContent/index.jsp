@@ -29,14 +29,14 @@
     <div class="container themed-container" style="background-color: #4598d3;">
         <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
         <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
-          <img src="C:\Users\USER-PC\OneDrive\바탕 화면\ppaa\프로젝트\front\mysite\image\logo.png"  class="img" alt="..." height="40" width="40">&nbsp;        
+          <img src="image/logo.png"  class="img" alt="..." height="40" width="40">&nbsp;        
           <span class="fs-4">예사날</span>
         </a>    
 
         <ul class="nav nav-pills">
             <button type="button" href="reserve" class="btn btn-secondary">예약내역</button>&nbsp;           
             <button type="button" href="bisMember" class="btn btn-secondary">사업자</button>&nbsp;           
-            <button type="button" href="login" class="btn btn-secondary">로그인</button>&nbsp;           
+            <button type="button" href="login.do" class="btn btn-secondary">로그인</button>&nbsp;           
             <button type="button" href="join" class="btn btn-secondary">회원가입</button>           
         </ul>
         </header>
