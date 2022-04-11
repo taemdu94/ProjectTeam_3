@@ -1,4 +1,4 @@
-package dto;
+package com.team3.dto;
 
 public class StoreVO {
 	private String userid;
