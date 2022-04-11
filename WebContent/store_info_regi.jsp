@@ -142,19 +142,39 @@ table {
           <div>
           </div>  
           &nbsp;&nbsp;&nbsp;
+          
+          
 
-          <form method="post" action="storeInfoRegi.do" >
+          <form method="post" action="storeInfoRegi.do" enctype="multipart/form-data">
 
             <div class="row">
               <div class="col-2">
-                <button type="button" class="btn btn-primary" disabled>대표사진</button>
+                <button type="button" class="btn btn-primary" disabled>대표사진1</button>
               </div>
               <div class="col-7">
-                <input class="form-control" type="file" id="formFile" name="store_img_file_name">
+                 <input class="form-control" type="file" id="formFile" name="store_img_file_name1"> 
               </div> 
               <div class="col-3">
                 <img src="icon_y_l.png" class="img-thumbnail" alt="..." width="200" height="200">
               </div>                     
+<!-- 
+              <div class="col-2">
+                <button type="button" class="btn btn-primary" disabled>대표사진2</button>
+              </div>
+              <div class="col-7">
+                <input class="form-control" type="file" id="formFile" name="store_img_file_name2">
+              </div> 
+              <div class="col-3">
+              </div>                     
+
+              <div class="col-2">
+                <button type="button" class="btn btn-primary" disabled>대표사진3</button>
+              </div>
+              <div class="col-7">
+                <input class="form-control" type="file" id="formFile" name="store_img_file_name3">
+              </div> 
+ -->
+
             </div>
             <div>&nbsp;</div>
 
