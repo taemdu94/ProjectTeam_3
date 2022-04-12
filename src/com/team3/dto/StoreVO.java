@@ -2,7 +2,9 @@ package com.team3.dto;
 
 public class StoreVO {
 	private String userid;
-	private String store_photo;
+	private String store_photo1;
+	private String store_photo2;
+	private String store_photo3;
 	private String store_name;
 	private String store_type;
 	private String store_time;
@@ -12,18 +14,30 @@ public class StoreVO {
 	private String memu_info;
 	private String parking;
 	private String parking_detail;
-	
+
 	public String getUserid() {
 		return userid;
 	}
 	public void setUserid(String userid) {
 		this.userid = userid;
 	}
-	public String getStore_photo() {
-		return store_photo;
+	public String getStore_photo1() {
+		return store_photo1;
 	}
-	public void setStore_photo(String store_photo) {
-		this.store_photo = store_photo;
+	public void setStore_photo1(String store_photo1) {
+		this.store_photo1 = store_photo1;
+	}
+	public String getStore_photo2() {
+		return store_photo2;
+	}
+	public void setStore_photo2(String store_photo2) {
+		this.store_photo2 = store_photo2;
+	}
+	public String getStore_photo3() {
+		return store_photo3;
+	}
+	public void setStore_photo3(String store_photo3) {
+		this.store_photo3 = store_photo3;
 	}
 	public String getStore_name() {
 		return store_name;
@@ -82,11 +96,11 @@ public class StoreVO {
 	
 	@Override
 	public String toString() {
-		return "storeDAO [userid=" + userid + ", store_photo=" + store_photo + ", store_name=" + store_name
-				+ ", store_type=" + store_type + ", store_time=" + store_time + ", store_time_w=" + store_time_w
-				+ ", store_addr=" + store_addr + ", store_addr_detail=" + store_addr_detail + ", memu_info=" + memu_info
-				+ ", parking=" + parking + ", parking_detail=" + parking_detail + "]";
+		return "StoreVO [userid=" + userid + ", store_photo1=" + store_photo1 + ", store_photo2=" + store_photo2
+				+ ", store_photo3=" + store_photo3 + ", store_name=" + store_name + ", store_type=" + store_type
+				+ ", store_time=" + store_time + ", store_time_w=" + store_time_w + ", store_addr=" + store_addr
+				+ ", store_addr_detail=" + store_addr_detail + ", memu_info=" + memu_info + ", parking=" + parking
+				+ ", parking_detail=" + parking_detail + "]";
 	}
-
-
+	
 }
