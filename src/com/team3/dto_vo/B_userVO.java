@@ -2,7 +2,7 @@ package com.team3.dto_vo;
 
 public class B_userVO {
 	private String user_id;
-	private String user_pwd;
+	private String user_password;
 	private String user_name;
 	private String user_email;
 	private String user_tel;
@@ -14,11 +14,11 @@ public class B_userVO {
 	public void setUser_id(String user_id) {
 		this.user_id = user_id;
 	}
-	public String getUser_pwd() {
-		return user_pwd;
+	public String getUser_password() {
+		return user_password;
 	}
-	public void setUser_pwd(String user_pwd) {
-		this.user_pwd = user_pwd;
+	public void setUser_password(String user_password) {
+		this.user_password = user_password;
 	}
 	public String getUser_name() {
 		return user_name;
@@ -47,7 +47,7 @@ public class B_userVO {
 	
 	@Override
 	public String toString() {
-		return "B_userVO [user_id=" + user_id + ", user_pwd=" + user_pwd + ", user_name=" + user_name + ", user_email="
+		return "B_userVO [user_id=" + user_id + ", user_password=" + user_password + ", user_name=" + user_name + ", user_email="
 				+ user_email + ", user_tel=" + user_tel + ", b_license=" + b_license + "]";
 	}
 	

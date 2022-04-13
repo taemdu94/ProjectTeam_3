@@ -26,16 +26,32 @@
     
     <div class="container themed-container" style="background-color: #4598d3;">
         <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
-          <img src="./images/예사날logo.png"  class="img" alt="..." height="40" width="40">&nbsp;        
+        <a href="index.jsp" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+          <img src="images/예사날logo.png"  class="img" alt="..." height="40" width="40">&nbsp;        
           <span class="fs-4">예사날</span>
         </a>    
 
-        <ul class="nav nav-pills">
-            <button type="button" href="reserve" class="btn btn-secondary">예약내역</button>&nbsp;           
-            <button type="button" href="bisMember" class="btn btn-secondary">사업자</button>&nbsp;           
-            <button type="button" onclick="location.href='login.jsp'" class="btn btn-secondary">로그인</button>&nbsp;          
-            <button type="button" href="join" class="btn btn-secondary">회원가입</button>           
+        <ul class="nav nav-pills">     
+<%
+			if(session.getAttribute("login") == "1") {
+				%>
+				<button type="button" href="reserve" class="btn btn-secondary">예약내역</button>&nbsp;
+				<button type="button" onclick="location.href='ProfileServlet'" class="btn btn-secondary">내 정보</button>&nbsp;
+				<button type="button" onclick="location.href='LogoutServlet'" class="btn btn-secondary">로그아웃</button>&nbsp;
+				<%
+			} else if(session.getAttribute("login") == "2") {
+				%>
+				<button type="button" href="bisMember" class="btn btn-secondary">매장관리</button>&nbsp;
+				<button type="button" onclick="location.href='ProfileServlet'" class="btn btn-secondary">내 정보</button>&nbsp;
+				<button type="button" onclick="location.href='LogoutServlet'" class="btn btn-secondary">로그아웃</button>&nbsp;
+	            <%
+			} else {
+				%>
+				<button type="button" onclick="location.href='login.jsp'" class="btn btn-secondary">로그인</button>&nbsp;           
+	            <button type="button" onclick="location.href='memchoice.jsp'" class="btn btn-secondary">회원가입</button> 
+	            <%
+			}
+%>                   
         </ul>
         </header>
       </div>

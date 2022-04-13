@@ -27,7 +27,7 @@ public class B_loginServlet extends HttpServlet {
 		String b_id = request.getParameter("member_b_id");
 		String b_pwd = request.getParameter("member_b_pwd");
 		
-		MemberDAO mDao = new MemberDAO();
+		MemberDAO mDao = MemberDAO.getInstance();
 		
 		String url = "";
 		int result = mDao.b_sign_in(b_id, b_pwd);		
@@ -37,7 +37,9 @@ public class B_loginServlet extends HttpServlet {
 			B_userVO bvo = mDao.b_profile(b_id);
 			
 			HttpSession session = request.getSession();	//세션 객체 생성
-			session.setAttribute("profile", bvo);		//회원 정보를 세션에 저장
+			session.setAttribute("b_profile", bvo);		//회원 정보를 세션에 저장
+			
+			session.setAttribute("login", "2");
 			
 			request.setAttribute("message", "인증이 완료되었습니다.");
 			

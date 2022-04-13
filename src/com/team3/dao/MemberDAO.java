@@ -12,12 +12,75 @@ import util.DBManager;
 
 public class MemberDAO {
 	
+	private MemberDAO() {}
+	
+	private static MemberDAO instance = new MemberDAO();
+	
+	public static MemberDAO getInstance() {
+		return instance;
+	}
+
 	//데이터 베이스에 접근하여 데이터를 획득하거나 설정
 	
 	//Create (insert) - 회원 가입
-	public int sign_up() {
+	public int n_sign_up(N_userVO nVO) {
+		String sql = "insert into n_user(user_id,user_password,user_name,user_email,user_tel) VALUES(?,?,?,?,?)";
 		
-		return 0;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		int result = -1;
+		
+		try {
+			
+			conn = DBManager.getConnection();
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, nVO.getUser_id());
+			pstmt.setString(2, nVO.getUser_password());
+			pstmt.setString(3, nVO.getUser_name());
+			pstmt.setString(4, nVO.getUser_email());
+			pstmt.setString(5, nVO.getUser_tel());
+
+			
+			result = pstmt.executeUpdate();
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt);
+		}
+		return result;
+	}
+	public int b_sign_up(B_userVO nVO) {
+		String sql = "insert into b_user(user_id,user_password,user_name,user_email,user_tel,b_license) VALUES(?,?,?,?,?,?)";
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		int result = -1;
+		
+		try {
+			
+			conn = DBManager.getConnection();
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, nVO.getUser_id());
+			pstmt.setString(2, nVO.getUser_password());
+			pstmt.setString(3, nVO.getUser_name());
+			pstmt.setString(4, nVO.getUser_email());
+			pstmt.setString(5, nVO.getUser_tel());
+			pstmt.setString(6, nVO.getB_license());
+
+			
+			result = pstmt.executeUpdate();
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt);
+		}
+		return result;
 	}
 	
 	//Read (select) - 사용자 인증,
@@ -95,7 +158,7 @@ public class MemberDAO {
 		}
 		return result;
 	}
-	//					데이터 활용
+	//					사용자 정보
 	public N_userVO n_profile(String user_id) {
 		String sql = "select * from n_user where user_id=?";
 		N_userVO nvo = new N_userVO();
@@ -147,7 +210,7 @@ public class MemberDAO {
 			
 			if(rs.next()) {
 				bvo.setUser_id(rs.getString("user_id"));
-				bvo.setUser_pwd(rs.getString("user_pwd"));
+				bvo.setUser_password(rs.getString("user_password"));
 				bvo.setUser_name(rs.getString("user_name"));
 				bvo.setUser_email(rs.getString("user_email"));
 				bvo.setUser_tel(rs.getString("user_tel"));
@@ -160,11 +223,145 @@ public class MemberDAO {
 		}
 		return bvo;
 	}
+	//					중복 확인
+	public int confirmID(String user_id) {
+		String sql = "select n_user.user_id,b_user.user_id from n_user full outer join b_user on n_user.user_id=b_user.user_id where n_user.user_id=? or b_user.user_id=?";
+		
+		int result = -1;
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			conn = DBManager.getConnection();
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, user_id);
+			pstmt.setString(2, user_id);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				result = 1;
+			} else {
+				result = -1;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt, rs);
+		}
+		return result;
+	}
+	//					아이디 찾기
+	public N_userVO n_findIdEmail(String user_email) {
+		String sql = "select user_id from n_user where user_email=?";
+
+		N_userVO nvo = new N_userVO();
+		
+		int result = -1;
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			conn = DBManager.getConnection();
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, user_email);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				nvo.setUser_id(rs.getString("user_id"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt, rs);
+		}
+		return nvo;
+	}
+	public B_userVO b_findIdEmail(String user_email) {
+		String sql = "select user_id from b_user where user_email=?";
+
+		B_userVO nvo = new B_userVO();
+		
+		int result = -1;
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			conn = DBManager.getConnection();
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, user_email);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				nvo.setUser_id(rs.getString("user_id"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt, rs);
+		}
+		return nvo;
+	}
 	
 	//Update (update) - 회원 정보 수정
-	public int profile_update() {
+	public int n_pwd_update(N_userVO nvo) {
+		String sql = "update n_user set user_password=? where user_id=?";
 		
-		return 0;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		int result = -1;
+		
+		try {
+			
+			conn = DBManager.getConnection();
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, nvo.getUser_password());
+			pstmt.setString(2, nvo.getUser_id());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt);
+		}
+		return result;
+		
+	}
+	public int b_pwd_update(B_userVO nvo) {
+		String sql = "update b_user set user_password=? where user_id=?";
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		int result = -1;
+		
+		try {
+			
+			conn = DBManager.getConnection();
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, nvo.getUser_password());
+			pstmt.setString(2, nvo.getUser_id());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt);
+		}
+		return result;
 		
 	}
 	
