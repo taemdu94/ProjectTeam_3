@@ -9,9 +9,7 @@
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.88.1">
 <title>예사날</title>
- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" 
-    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" 
-    crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"> 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/headers/">
     <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/footers/">   
     
@@ -19,34 +17,36 @@
     <link href="css/headers.css" rel="stylesheet">
     <link href="css/footers.css" rel="stylesheet">
     <link href="css/index.css" rel="stylesheet">
-    <link href="reset/index.css" rel="stylesheet">
-</head>
-<body>
-<!-- <main> -->
+    <link href="ccs/index.css" rel="stylesheet">
+  </head>
+ 
+  <body>
+    
+    <!-- <main> -->
     
     <div class="container themed-container" style="background-color: #4598d3;">
         <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
-          <img src="images/예사날logo.png"  class="img" alt="..." height="40" width="40">&nbsp;        
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">  
+          <img src="image/logo.png"  class="img" alt="..." height="40" width="40">&nbsp;        
           <span class="fs-4">예사날</span>
         </a>    
 
         <ul class="nav nav-pills">
             <button type="button" href="reserve" class="btn btn-secondary">예약내역</button>&nbsp;           
             <button type="button" href="bisMember" class="btn btn-secondary">사업자</button>&nbsp;           
-            <button type="button" href="login" class="btn btn-secondary">로그인</button>&nbsp;           
+            <button type="button" href="login.do" class="btn btn-secondary">로그인</button>&nbsp;           
             <button type="button" href="join" class="btn btn-secondary">회원가입</button>           
         </ul>
         </header>
       </div>
     <div class="card"></div>
       <div class="card map_wrap">
-        <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
+        <div id="map" style="width:1140px;height:600px;position:relative;overflow:hidden;"></div>
     
         <div id="menu_wrap" class="bg_white">
             <div class="option">
                 <div>
-                    <form onsubmit="searchPlaces(); return false;">
+                    <form onsubmit="searchPlaces(); returnfalse;">
                         키워드 : <input type="text" value="키워드 검색" id="keyword" size="15"> 
                         <button type="submit">검색하기</button> 
                     </form>
