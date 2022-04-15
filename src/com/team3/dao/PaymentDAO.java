@@ -29,13 +29,12 @@ public class PaymentDAO  {
 	
 	// Create (insert) - 회원 가입
 		public int insertPayment(PaymentVO rVo) {
-			String sql = "insert into payment values(payment_abs(rpad(dbms_random.random,4)),?,sysdate,?";
+			String sql = "insert into payment values(payment_LPAD(seq.nextval, 4, 0),?,sysdate,?";
 			
 			int result = -1;
 			
 			Connection conn = null;
 			PreparedStatement pstmt= null;
-			
 			
 			try {
 				// 1. jdbc 드라이버 로드 : forName(className)
