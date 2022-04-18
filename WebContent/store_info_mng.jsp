@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+
+<%@ page import="java.io.*"%>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -82,23 +84,29 @@ table {
           font-size: 3.5rem;
         }
 }
+
     </style>
+    
+<script >
 
-<script type="text/javascript">
+function showImage(input) {
+	alert("showImage ~~~");
 
-function readURL(input) {
+	
+	
 	if (input.files && input.files[0]) {
 		var reader = new FileReader();
 		reader.onload = function(e) {
-			document.getElementById('preview').src = e.target.result;
+			document.getElementById('preview1').src = e.target.result;
 		};
 		reader.readAsDataURL(input.files[0]);
 	} else {
-		document.getElementById('preview').src = "icon_y_l.png";
+		document.getElementById('preview1').src = "icon_y_l.png";
 	}
+
 }
 
-</script>
+</script>    
 
     
     <!-- Custom styles for this template -->
@@ -137,7 +145,7 @@ function readURL(input) {
               <div class="col-4" style="width: auto;">
                 <div class="d-grid gap-2">&nbsp;
                   <button class="btn btn-secondary" type="button">예약관리 서비스</button>&nbsp;
-                  <button class="btn btn-primary" type="button">매장정보 등록</button>&nbsp;
+                  <button class="btn btn-primary" type="button">매장관리 서비스</button>&nbsp;
                   <button class="btn btn-secondary" type="button">회원탈퇴</button>&nbsp;
                 </div> 
               </div>
@@ -151,25 +159,23 @@ function readURL(input) {
         <div class="col-9">
 
           <div>
-            <h6 class="display-5 fw-normal">매장등록</h6>&nbsp;
+            <h6 class="display-5 fw-normal">메뉴등록</h6>&nbsp;
           </div>
           &nbsp;
           <div>
           </div>  
           &nbsp;&nbsp;&nbsp;
-          
-          
 
-          <form method="post" action="storeInfoRegi.do" enctype="multipart/form-data">
+          <form action="storeInfoMng.do">
 
             <div class="row">
 				    <div class="col-9">
 						  <div class="row">
 						       <div class="col-3">
-						           <button type="button" class="btn btn-primary" disabled>대표사진1</button>
+						           <button type="button" class="btn btn-primary"  disabled>대표사진1</button>
 						       </div> 
 						       <div class="col-9">
-						           <input class="form-control" type="file" id="formFile" name="store_img_file_name1"   onclick="readURL(this);" onchange="readURL(this);"> 
+					                <input class="form-control" type="text" placeholder="${fileName1}" aria-label="default input example" name="store_img_file_name" disabled>               
 						       </div> 
 						  </div>
 						  <div class="row">
@@ -177,7 +183,7 @@ function readURL(input) {
 						           <button type="button" class="btn btn-primary" disabled>대표사진2</button>
 						       </div>
 						       <div class="col-9">
-						           <input class="form-control" type="file" id="formFile" name="store_img_file_name2" onclick="readURL(this);" onchange="readURL(this);" >
+					                <input class="form-control" type="text" placeholder="${fileName2}" aria-label="default input example" name="store_img_file_name"  disabled>               
 						       </div> 
 						  </div>
 						  <div class="row">
@@ -185,33 +191,65 @@ function readURL(input) {
 						           <button type="button" class="btn btn-primary" disabled>대표사진3</button>
 						       </div>
 						       <div class="col-9">
-						           <input class="form-control" type="file" id="formFile" name="store_img_file_name3" onclick="readURL(this);" onchange="readURL(this);" >
+					                <input class="form-control" type="text" placeholder="${fileName3}" aria-label="default input example" name="store_img_file_name"  disabled>               
 						       </div> 
 						  </div>
 				    </div>
 				    <div class="col-3">
-				          <img  id="preview" src="icon_y_l.png" class="img-thumbnail" alt="..." width="200" height="200" />  
+	 				    <img  id="preview1" src="${pageContext.request.contextPath}/images/${realFileName1}"  class="img-thumbnail" alt="..." width="200" height="200" />  
+	 				    <img  id="preview1" src="${pageContext.request.contextPath}/images/${realFileName2}"  class="img-thumbnail" alt="..." width="200" height="200" />  
+	 				    <img  id="preview1" src="${pageContext.request.contextPath}/images/${realFileName3}"  class="img-thumbnail" alt="..." width="200" height="200" />  
 				    </div>
             </div>
             <div>&nbsp;</div>
+<!--
+            <div class="row">  
+              <div class="col-2">
+                <button type="button" class="btn btn-primary" disabled" >${fileName1}</button>
+              </div>
+              <div class="col-10">
+ 				    <img  id="preview1" src="${pageContext.request.contextPath}/images/${realFileName1}"  class="img-thumbnail" alt="..." width="200" height="200" />  
+              </div>
+
+              <div class="col-2">
+                <button type="button" class="btn btn-primary" disabled" >${fileName2}</button>
+              </div>
+              <div class="col-10">
+ 				    <img  id="preview1" src="${pageContext.request.contextPath}/images/${realFileName2}"  class="img-thumbnail" alt="..." width="200" height="200" />  
+              </div>
+
+              <div class="col-2">
+                <button type="button" class="btn btn-primary" disabled" >${fileName3}</button>
+              </div>
+              <div class="col-10">
+ 				    <img  id="preview1" src="${pageContext.request.contextPath}/images/${realFileName3}"  class="img-thumbnail" alt="..." width="200" height="200" />  
+              </div>
+            </div>
+            <div>&nbsp;</div>            
+ -->
 
             <div class="row">  
               <div class="col-2">
-                <button type="button" class="btn btn-primary" disabled>업체이름</button>
+                <button type="button" class="btn btn-primary" disabled >업체이름</button>
               </div>
               <div class="col-10">
-                <input class="form-control" type="text" placeholder="Default input" aria-label="default input example" name="store_name">                
+                <input class="form-control" type="text" placeholder="${store_name}" aria-label="default input example" name="store_name" disabled>                
               </div>
             </div>
             <div>&nbsp;</div>            
 
-            <div class="row input-group">  
+            <div class="row ">  
               <div class="col-2">
                 <button type="button" class="btn btn-primary" disabled>업종선택</button>
               </div>
+              <div class="col-10">
+                <input class="form-control" type="text" placeholder="${store_type}" aria-label="default input example" name="store_type" disabled>                
+              </div>
+
+<!-- 
               <div class="col-10 ">
                 <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="store_type" id="inlineRadio1" value="숙박업">
+                  <input class="form-check-input" type="radio" name="store_type" id="inlineRadio1" value="숙박업" checked>
                   <label class="form-check-label" for="inlineRadio1">숙박업</label>
                 </div>
                 <div class="form-check form-check-inline">
@@ -223,6 +261,7 @@ function readURL(input) {
                   <label class="form-check-label" for="inlineRadio3">문화시설 </label>
                 </div>
               </div> 
+ -->                
             </div>
             <div>&nbsp;</div>              
 
@@ -231,8 +270,8 @@ function readURL(input) {
                 <button type="button" class="btn btn-primary" disabled>운영시간</button>
               </div>
               <div class="col-10">
-               <input class="form-control " type="text" placeholder="Default input" aria-label="default input example" value="평일 : 오전00:00 - 오후00:00 마감" name="time_day"> </a>               
-               <input class="form-control " type="text" placeholder="Default input" aria-label="default input example" value="주말 : 오전00:00 - 오후00:00 마감" name="time_week">                
+               <input class="form-control " type="text" placeholder="Default input" aria-label="default input example" value="${time_day}" name="time_day" disabled> </a>               
+               <input class="form-control " type="text" placeholder="Default input" aria-label="default input example" value="${time_week}" name="time_week" disabled>                
               </div> 
             </div>
             <div>&nbsp;</div>
@@ -242,55 +281,68 @@ function readURL(input) {
                 <button type="button" class="btn btn-primary" disabled>주소</button>
               </div>
               <div class="col-10">
-                <input class="form-control" type="text" placeholder="Default input" aria-label="default input example" name="store_addr">                
+                <input class="form-control" type="text" placeholder="${store_addr}" aria-label="default input example" name="store_addr" disabled>                
               </div>
               <div>&nbsp;</div>
               <div class="col-2">
                 <button type="button" class="btn btn-primary" disabled>상세주소</button>
               </div>
               <div class="col-10">
-                <input class="form-control" type="text" placeholder="Default input" aria-label="default input example" name="store_addr_detail">                
+                <input class="form-control" type="text" placeholder="${store_addr_detail}" aria-label="default input example" name="store_addr_detail" disabled>                
               </div> 
             </div>
             <div>&nbsp;</div>
-
+            
             <div class="row">  
               <div class="col-2">
                 <button type="button" class="btn btn-primary" disabled>업체전화</button>
               </div>
               <div class="col-10">
-                <input class="form-control" type="text" placeholder="Default input" aria-label="default input example" name="store_tel">                
+                <input class="form-control" type="text" placeholder="${store_tel}" aria-label="default input example" name="store_tel" disabled>                
               </div> 
             </div>
             <div>&nbsp;</div>
+            
 
             <div class="row">  
               <div class="col-2">
-                <button type="button" class="btn btn-primary" disabled>메뉴등록</button>
+                <button type="button" class="btn btn-primary" >메뉴등록</button>
               </div>
               <div class="col-10">
-                <button type="button" class="btn btn-light" disabled>매장정보를 등록하시면, 매장관리 서비스에서 메뉴를 등록할 수 있습니다.</button>
+                <label type="text" class="btn btn-light"  >메뉴와 가격을 연속해서 입력하시면 됩니다.</button>
+                <div class="form-floating">
+                  <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 300px" name="store_menu"></textarea>
+                  <label for="floatingTextarea2">[메뉴명][공백][메뉴가격][공백]</label>
+                </div>
               </div> 
             </div>
             <div>&nbsp;</div>
 
 
-            <div class="row">  
+            <div class="row ">  
               <div class="col-2">
                 <button type="button" class="btn btn-primary" disabled>주차여부</button>
               </div>
               <div class="col-10">
+                <input class="form-control" type="text" placeholder="${store_parking}" aria-label="default input example" name="store_parking" disabled>                
+              </div>
+<!-- 
+              <div class="col-10">
                 <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="store_parking" value="가능" checked>
-                  <label class="form-check-label" for="inlineCheckbox1">가능</label>
-              </div>
-              <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="checkbox" id="inlineCheckbox2" name="store_parking" value="불가능">
-                  <label class="form-check-label" for="inlineCheckbox2">불가능</label>
-              </div>
-              <input class="form-control" type="text" placeholder="Default input" aria-label="default input example" name="store_parking_etc" value="비고란 ...">                
-              </div> 
-            </div>
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="store_parking" value="가능" checked>
+                    <label class="form-check-label" for="inlineCheckbox1">가능</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" name="store_parking" value="불가능">
+                    <label class="form-check-label" for="inlineCheckbox2">불가능</label>
+                </div>
+ -->
+	            <div class="col-2">
+				</div>
+ 				<div class="col-10">	
+                <input class="form-control" type="text" placeholder="${store_parking_etc}" aria-label="default input example" name="store_parking_etc" disabled>
+                </div>                
+            </div> 
             <div>&nbsp;</div>
             <div>&nbsp;</div>
             <div>&nbsp;</div>
@@ -299,7 +351,7 @@ function readURL(input) {
               <div class="col-2">
               </div>
               <div class="col-10">
-                <input class="btn btn-primary" type="submit" value="등록">
+                <input class="btn btn-primary" type="submit" value="변경">
                 &nbsp;
                 <input class="btn btn-primary" type="reset" value="취소">
               </div> 
