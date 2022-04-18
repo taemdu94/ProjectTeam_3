@@ -26,7 +26,7 @@ public class LogoutServlet extends HttpServlet {
 		out.print("<body>");
 		out.print("<script>");
 		out.print("alert(\"로그아웃 되었습니다.\");");
-		out.print("location.href=\"login.jsp\";");
+		out.print("location.href=\"member/login.jsp\";");
 		out.print("</script>");
 		out.print("</body>");
 		out.print("</html>");

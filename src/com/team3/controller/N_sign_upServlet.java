@@ -11,14 +11,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.team3.dao.MemberDAO;
-import com.team3.dto_vo.N_userVO;
+import com.team3.dto.N_userVO;
 
 @WebServlet("/N_sign_upServlet")
 public class N_sign_upServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher dispatcher = request.getRequestDispatcher("n_sign_up.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("member/n_sign_up.jsp");
 		dispatcher.forward(request, response);
 	}
 
@@ -52,7 +52,7 @@ public class N_sign_upServlet extends HttpServlet {
 			
 			out.print("<script>");
 			out.print("alert(\"회원가입에 성공 하였습니다.\");");
-			out.print("location.href=\"login.jsp\";");
+			out.print("location.href=\"member/login.jsp\";");
 			out.print("</script>");
 
 		} else {	//회원 가입 실패 - DB에 저장 실패 하였는가

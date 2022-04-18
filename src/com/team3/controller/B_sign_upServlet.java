@@ -11,15 +11,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.team3.dao.MemberDAO;
-import com.team3.dto_vo.B_userVO;
-import com.team3.dto_vo.N_userVO;
+import com.team3.dto.B_userVO;
+import com.team3.dto.N_userVO;
 
 @WebServlet("/B_sign_upServlet")
 public class B_sign_upServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher dispatcher = request.getRequestDispatcher("b_sign_up.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("member/b_sign_up.jsp");
 		dispatcher.forward(request, response);
 	}
 
@@ -33,17 +33,19 @@ public class B_sign_upServlet extends HttpServlet {
 		String user_name = request.getParameter("member_b_name");
 		String user_email = request.getParameter("member_b_email");
 		String user_tel = request.getParameter("member_b_tel");
+		String b_license = request.getParameter("member_b_license");
 		
 		MemberDAO mDao = MemberDAO.getInstance();
-		B_userVO mVo = new B_userVO();
+		B_userVO bvo = new B_userVO();
 		
-		mVo.setUser_id(user_id);
-		mVo.setUser_password(user_password);
-		mVo.setUser_name(user_name);
-		mVo.setUser_email(user_email);
-		mVo.setUser_tel(user_tel);
+		bvo.setUser_id(user_id);
+		bvo.setUser_password(user_password);
+		bvo.setUser_name(user_name);
+		bvo.setUser_email(user_email);
+		bvo.setUser_tel(user_tel);
+		bvo.setB_license(b_license);
 		
-		int result = mDao.b_sign_up(mVo);
+		int result = mDao.b_sign_up(bvo);
 		
 		out.print("<html>");
 		out.print("<body>");
@@ -53,7 +55,7 @@ public class B_sign_upServlet extends HttpServlet {
 			
 			out.print("<script>");
 			out.print("alert(\"회원가입에 성공 하였습니다.\");");
-			out.print("location.href=\"login.jsp\";");
+			out.print("location.href=\"member/login.jsp\";");
 			out.print("</script>");
 
 		} else {	//회원 가입 실패 - DB에 저장 실패 하였는가

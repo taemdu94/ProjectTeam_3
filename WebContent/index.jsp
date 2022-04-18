@@ -35,7 +35,7 @@
 <%
 			if(session.getAttribute("login") == "1") {
 				%>
-				<button type="button" href="reserve" class="btn btn-secondary">예약내역</button>&nbsp;
+				<button type="button" onclick="location.href='N_reservationServlet'" class="btn btn-secondary">예약내역</button>&nbsp;
 				<button type="button" onclick="location.href='ProfileServlet'" class="btn btn-secondary">내 정보</button>&nbsp;
 				<button type="button" onclick="location.href='LogoutServlet'" class="btn btn-secondary">로그아웃</button>&nbsp;
 				<%
@@ -47,8 +47,8 @@
 	            <%
 			} else {
 				%>
-				<button type="button" onclick="location.href='login.jsp'" class="btn btn-secondary">로그인</button>&nbsp;           
-	            <button type="button" onclick="location.href='memchoice.jsp'" class="btn btn-secondary">회원가입</button> 
+				<button type="button" onclick="location.href='member/login.jsp'" class="btn btn-secondary">로그인</button>&nbsp;           
+	            <button type="button" onclick="location.href='member/memchoice.jsp'" class="btn btn-secondary">회원가입</button> 
 	            <%
 			}
 %>                   

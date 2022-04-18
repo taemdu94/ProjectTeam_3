@@ -1,4 +1,4 @@
-package com.team3.dto_vo;
+package com.team3.dto;
 
 public class N_userVO {
 	private String user_id;

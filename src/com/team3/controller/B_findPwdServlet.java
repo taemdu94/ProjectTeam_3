@@ -37,18 +37,18 @@ public class B_findPwdServlet extends HttpServlet {
 		if (user_id==null || user_id=="") {
 			out.print("<script>");
 			out.print("alert(\"아이디를 입력 해 주세요.\");");
-			out.print("location.href=\"findpwd.jsp\";");
+			out.print("location.href=\"member/findpwd.jsp\";");
 			out.print("</script>");
 			
 		} else {
 			if (result == 1) {
 				request.setAttribute("user_id", user_id);
-				RequestDispatcher dispatcher = request.getRequestDispatcher("b_newPwd.jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("member/b_newPwd.jsp");
 				dispatcher.forward(request, response);
 			} else if (result == -1) {
 				out.print("<script>");
 				out.print("alert(\"정보가 없는 회원 입니다.\");");
-				out.print("location.href=\"findpwd.jsp\";");
+				out.print("location.href=\"member/findpwd.jsp\";");
 				out.print("</script>");
 			}
 		}

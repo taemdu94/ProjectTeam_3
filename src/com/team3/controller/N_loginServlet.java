@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.team3.dao.MemberDAO;
-import com.team3.dto_vo.N_userVO;
+import com.team3.dto.N_userVO;
 
 @WebServlet("/N_loginServlet")
 public class N_loginServlet extends HttpServlet {
@@ -32,8 +32,10 @@ public class N_loginServlet extends HttpServlet {
 		
 		MemberDAO mDao = MemberDAO.getInstance();
 		
-		String url = "";
 		int result = mDao.n_sign_in(n_id, n_pwd);
+		
+		out.print("<html>");
+		out.print("<body>");
 		
 		if (result == 1) {
 			//DB에서 회원정보(이름 포함)을 가져와서 저장하는 구문 작성
@@ -44,21 +46,18 @@ public class N_loginServlet extends HttpServlet {
 			
 			session.setAttribute("login", "1");
 			
-			request.setAttribute("message", "인증이 완료되었습니다.");
-			
-			url = "index.jsp";
-		} else if (result == 0) {
-			request.setAttribute("message", "비밀번호가 일치하지 않습니다.");
-			
-			url = "login.jsp";
+			RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+			dispatcher.forward(request, response);
 		} else {
-			request.setAttribute("message", "존재하지 않는 회원 입니다.");
-
-			url = "login.jsp";
+			out.print("<script>");
+			out.print("alert(\"아이디 또는 패스워드가 일치하지 않습니다.\");");
+			out.print("location.href=\"member/login.jsp\";");
+			out.print("</script>");
 		}
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
-		dispatcher.forward(request, response);
+		out.print("</body>");
+		out.print("</html>");
+		
 	}
 
 }

@@ -5,8 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import com.team3.dto_vo.B_userVO;
-import com.team3.dto_vo.N_userVO;
+import com.team3.dto.B_userVO;
+import com.team3.dto.N_userVO;
 
 import util.DBManager;
 
@@ -312,6 +312,65 @@ public class MemberDAO {
 	}
 	
 	//Update (update) - 회원 정보 수정
+	public int n_profile_update(N_userVO nvo) {
+		String sql = "update n_user set user_password=?,user_name=?,user_email=?,user_tel=? where user_id=?";
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		int result = -1;
+		
+		try {
+			
+			conn = DBManager.getConnection();
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, nvo.getUser_password());
+			pstmt.setString(2, nvo.getUser_name());
+			pstmt.setString(3, nvo.getUser_email());
+			pstmt.setString(4, nvo.getUser_tel());
+			pstmt.setString(5, nvo.getUser_id());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt);
+		}
+		return result;
+		
+	}
+	public int b_profile_update(B_userVO bvo) {
+		String sql = "update b_user set user_password=?,user_name=?,user_email=?,user_tel=? where user_id=?";
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		int result = -1;
+		
+		try {
+			
+			conn = DBManager.getConnection();
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, bvo.getUser_password());
+			pstmt.setString(2, bvo.getUser_name());
+			pstmt.setString(3, bvo.getUser_email());
+			pstmt.setString(4, bvo.getUser_tel());
+			pstmt.setString(5, bvo.getUser_id());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt);
+		}
+		return result;
+		
+	}
+	//					비밀번호 수정
 	public int n_pwd_update(N_userVO nvo) {
 		String sql = "update n_user set user_password=? where user_id=?";
 		
@@ -366,17 +425,51 @@ public class MemberDAO {
 	}
 	
 	//Delete (delete) - 회원 삭제
-	public int n_user_delete() {
+	public int n_user_delete(N_userVO nvo) {
 		String sql = "delete from n_user where user_id=?";
 		
 		int result = -1;
 		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			conn = DBManager.getConnection();
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, nvo.getUser_id());
+			
+			result = pstmt.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt);
+		}
+		
 		return result;
 	}
-	public int b_user_delete() {
+	public int b_user_delete(B_userVO bvo) {
 		String sql = "delete from b_user where user_id=?";
 		
 		int result = -1;
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			conn = DBManager.getConnection();
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, bvo.getUser_id());
+			
+			result = pstmt.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt);
+		}
 		
 		return result;
 	}

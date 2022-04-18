@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.team3.dao.MemberDAO;
-import com.team3.dto_vo.N_userVO;
+import com.team3.dto.N_userVO;
 
 @WebServlet("/N_findIdServlet")
 public class N_findIdServlet extends HttpServlet {
@@ -38,13 +38,13 @@ public class N_findIdServlet extends HttpServlet {
 		if (nvo.getUser_id()==null) {
 			out.print("<script>");
 			out.print("alert(\"실패 하였습니다.\");");
-			out.print("location.href=\"findid.jsp\";");
+			out.print("location.href=\"member/findid.jsp\";");
 			out.print("</script>");
 		} else if (nvo.getUser_id()==nvo.getUser_id()) {
 			System.out.println(nvo.getUser_id());
 			out.print("<script>");
 			out.print("alert(\"성공 하였습니다.\");");
-			out.print("location.href=\"login.jsp\";");
+			out.print("location.href=\"member/login.jsp\";");
 			out.print("</script>");
 		}
 		

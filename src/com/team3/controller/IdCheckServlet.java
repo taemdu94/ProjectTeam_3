@@ -36,7 +36,7 @@ public class IdCheckServlet extends HttpServlet {
 		}
 		
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("idCheck.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("member/idCheck.jsp");
 		dispatcher.forward(request, response);
 	}
 
