@@ -60,3 +60,39 @@ function check_pwd(){
         }
     }
 }
+
+function pwdHide()  {
+	if(document.getElementById('pwd').value !='' || document.getElementById('pw2').value!=''){
+		document.getElementById('pwd').value='';
+		document.getElementById('pw2').value='';
+	}
+	
+	document.getElementById('showBtn').style.display = '';
+	document.getElementById('hideBtn').style.display = 'none';
+	
+	document.getElementById('hidePwd').style.display = 'none';
+}
+function pwdShow()  {
+	document.getElementById('showBtn').style.display = 'none';
+	document.getElementById('hideBtn').style.display = '';
+	
+	document.getElementById('hidePwd').style.display = '';
+}
+
+function emailHide()  {
+	if(document.getElementById('newEmail').value !='' || document.getElementById('emailCheck').value!=''){
+		document.getElementById('newEmail').value='';
+		document.getElementById('emailCheck').value='';
+	}
+	
+	document.getElementById('showBtn1').style.display = '';
+	document.getElementById('hideBtn1').style.display = 'none';
+	
+	document.getElementById('hideEmail').style.display = 'none';
+}
+function emailShow()  {
+	document.getElementById('showBtn1').style.display = 'none';
+	document.getElementById('hideBtn1').style.display = '';
+	
+	document.getElementById('hideEmail').style.display = '';
+}
