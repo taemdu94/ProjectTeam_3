@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="ko">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,25 +19,44 @@
     <link href="./css/bootstrap.min.css" rel="stylesheet">
     
     <!-- Custom styles for this template -->
-    <link href="headers.css" rel="stylesheet">
+    <link href="./css/headers.css" rel="stylesheet">
     <!-- Custom styles for this template -->
-    <link href="footers.css" rel="stylesheet">    
+    <link href="./css/footers.css" rel="stylesheet">    
 
-    <link href="reset.css" rel="stylesheet">
+    <link href="./css/reset.css" rel="stylesheet">
+    
+    <script type="text/javascript" src="js/member.js"></script>
 </head>
-<body>
- <div class="container themed-container" style="background-color: #4598d3;">
+ 
+<body>   
+    <div class="container themed-container" style="background-color: #4598d3;">
         <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-            <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
-                <img src="icon_y_l.png"  class="img" alt="..." height="40" width="40">&nbsp;        
+            <a href="index.jsp" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+                <img src="./images/예사날logo.png"  class="img" alt="..." height="40" width="40">&nbsp;        
                 <span class="fs-4">예사날</span>
             </a>    
 
             <ul class="nav nav-pills">
-                <button type="button" onclick="location.href='./내정보_예약내역'" class="btn btn-secondary">예약내역</button>&nbsp;
-                <button type="button" onclick="location.href='./사업자_사업자회원정보'" class="btn btn-secondary">사업자</button>&nbsp;
-                <button type="button" onclick="location.href='./login.html'" class="btn btn-secondary">로그인</button>&nbsp;           
-                <button type="button" onclick="location.href='./memchoice.html'" class="btn btn-secondary">회원가입</button>             
+<%
+			if(session.getAttribute("login") == "1") {
+				%>
+				<button type="button" href="reserve" class="btn btn-secondary">예약내역</button>&nbsp;
+				<button type="button" onclick="" class="btn btn-secondary">내 정보</button>&nbsp;
+				<button type="button" onclick="location.href='LogoutServlet'" class="btn btn-secondary">로그아웃</button>&nbsp;
+				<%
+			} else if(session.getAttribute("login") == "2") {
+				%>
+				<button type="button" href="bisMember" class="btn btn-secondary">매장관리</button>&nbsp;
+				<button type="button" onclick="" class="btn btn-secondary">내 정보</button>&nbsp;
+				<button type="button" onclick="location.href='LogoutServlet'" class="btn btn-secondary">로그아웃</button>&nbsp;
+	            <%
+			} else {
+				%>
+				<button type="button" onclick="location.href='login.jsp'" class="btn btn-secondary">로그인</button>&nbsp;           
+	            <button type="button" onclick="location.href='memchoice.jsp'" class="btn btn-secondary">회원가입</button> 
+	            <%
+			}
+%>                
             </ul>
         </header>
     </div>
@@ -54,33 +73,33 @@
             </ul>
             <div class="tab-content" id="myTabContent">
                 <div class="container tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                    <form action="./index.html 일반로그인" method="get">
+                    <form action="N_loginServlet" method="post" name="nfrm">
                         <div class="p-2"></div>
                         <div class="row align-items-center">
                             <div class="col-sm-8">
-                                    <label for="exampleInputEmail1" class="form-label">Id</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">	
-                                    <label for="exampleInputPassword1" class="form-label">Password</label>
-                                    <input type="password" class="form-control" id="exampleInputPassword1">
+                                    <label class="form-label">Id</label>
+                                    <input type="text" class="form-control" name="member_n_id">	
+                                    <label class="form-label">Password</label>
+                                    <input type="password" class="form-control" name="member_n_pwd">
                             </div>
                             <div class="col">
-                                <button type="submit" class="btn btn-secondary" id="btnmargin">로그인</button>
+                                <button type="submit" class="btn btn-secondary" onclick="return n_login()">로그인</button>
                             </div>
                         </div>     
                     </form>
                 </div>
                 <div class="container tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                    <form action="./index.html 사업자로그인" method="get">
+                    <form action="B_loginServlet" method="post" name="bfrm">
                         <div class="p-2"></div>
                         <div class="row align-items-center">
                             <div class="col-sm-8">
-                                <label for="exampleInputEmail1" class="form-label">Id</label>
-                                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">	
-                                <label for="exampleInputPassword1" class="form-label">Password</label>
-                                <input type="password" class="form-control" id="exampleInputPassword1">
+                                <label class="form-label">Id</label>
+                                <input type="text" class="form-control" name="member_b_id">	
+                                <label class="form-label">Password</label>
+                                <input type="password" class="form-control" name="member_b_pwd">
                             </div>
                             <div class="col">
-                                <button type="submit" class="btn btn-secondary" id="btnmargin">로그인</button>
+                                <button type="submit" class="btn btn-secondary" onclick="return b_login()">로그인</button>
                             </div>
                         </div>     
                     </form>
@@ -88,7 +107,7 @@
             </div>
             <div class="p-2"></div>
             <div class="findidpwd">
-                <a href="./findid.html">아이디</a>/<a href="./findpwd.html">패스워드</a>찾기
+                <a href="findid.jsp">아이디</a>/<a href="findpwd.jsp">패스워드</a>찾기
             </div>
         </div>
         
@@ -104,6 +123,7 @@
         </footer>
     </div> 
 
-    <script src="./js/bootstrap.bundle.min.js"></script>     
+    <script src="./js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 </html>

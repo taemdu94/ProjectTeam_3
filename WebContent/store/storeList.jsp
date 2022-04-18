@@ -9,7 +9,7 @@
 <meta name="author"
 	content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
 <meta name="generator" content="Hugo 0.88.1">
-<title>예사날</title>
+<title>검색 리스트</title>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -28,14 +28,14 @@
 </head>
 <body>
 	<!-- <main> -->
-	<form action="./store/storeList.jsp" method="post">
+	<form action="" method="post">
 		<div class="container themed-container"
 			style="background-color: #4598d3;">
 			<header
 				class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-				<a href="index.jsp"
+				<a href="../index.jsp"
 					class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
-					<img src="./images/예사날logo.png" class="img" alt="..." height="40"
+					<img src="../images/예사날logo.png" class="img" alt="..." height="40"
 					width="40">&nbsp; <span class="fs-4">예사날</span>
 				</a>
 
@@ -53,15 +53,42 @@
 			</header>
 		</div>
 		<div class="container">
-				<div class="col-lg-4">
+			<div class="row">
+				<div class="col-3">
 					<input type="text" class="form-control pull-right"
 						placeholder="Search" name="searchWord" />
 				</div>
 				<button class="btn btn-primary col-1" type="submit">
 					<span class="glyphicon glyphicon-search">검색</span>
 				</button>
-		</div>
-		</div>
+			</div>
+			<hr>
+			<div class="row">
+				<div class="col-6">
+
+					<!-- 업체 목록 -->
+					<h4>업체 검색 결과</h4>
+					<table border="1">
+						<tr>
+							<td>대표이미지</td>
+							<td>업체명</td>
+							<td>업종</td>
+							<td>주소</td>
+						</tr>
+						<c:forEach var="" items="${storeList}">
+							<tr>
+								<td>${store.store_photo1}</td>
+								<td>${store.store_name}</td>
+								<td>${store.store_type}</td>
+								<td>${store.store_addr}</td>
+								<td><a href="./Store_Detail.jsp?store_name=${store.store_name}">상품상세</a></td>
+						</c:forEach>
+						</tr>
+					</table>
+				</div>
+
+			</div>
+			<hr>
 		</div>
 
 		<div class="p-3"></div>
