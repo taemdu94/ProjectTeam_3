@@ -166,7 +166,7 @@ function showImage(input) {
           </div>  
           &nbsp;&nbsp;&nbsp;
 
-          <form action="storeInfoMng.do">
+          <form method="post" action="storeInfoMng.do">
 
             <div class="row">
 				    <div class="col-9">

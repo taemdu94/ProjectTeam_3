@@ -1,6 +1,7 @@
 package com.team3.dto;
 
 public class StoreVO {
+
 	private String userid;
 	private String store_photo1;
 	private String store_photo2;
@@ -11,6 +12,7 @@ public class StoreVO {
 	private String store_time_w;
 	private String store_addr;
 	private String store_addr_detail;
+	private String store_tel;
 	private String memu_info;
 	private String parking;
 	private String parking_detail;
@@ -75,6 +77,12 @@ public class StoreVO {
 	public void setStore_addr_detail(String store_addr_detail) {
 		this.store_addr_detail = store_addr_detail;
 	}
+	public String getStore_tel() {
+		return store_tel;
+	}
+	public void setStore_tel(String store_tel) {
+		this.store_tel = store_tel;
+	}
 	public String getMemu_info() {
 		return memu_info;
 	}
@@ -93,14 +101,15 @@ public class StoreVO {
 	public void setParking_detail(String parking_detail) {
 		this.parking_detail = parking_detail;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "StoreVO [userid=" + userid + ", store_photo1=" + store_photo1 + ", store_photo2=" + store_photo2
 				+ ", store_photo3=" + store_photo3 + ", store_name=" + store_name + ", store_type=" + store_type
 				+ ", store_time=" + store_time + ", store_time_w=" + store_time_w + ", store_addr=" + store_addr
-				+ ", store_addr_detail=" + store_addr_detail + ", memu_info=" + memu_info + ", parking=" + parking
-				+ ", parking_detail=" + parking_detail + "]";
+				+ ", store_addr_detail=" + store_addr_detail + ", store_tel=" + store_tel + ", memu_info=" + memu_info
+				+ ", parking=" + parking + ", parking_detail=" + parking_detail + "]";
 	}
-	
+
+
 }

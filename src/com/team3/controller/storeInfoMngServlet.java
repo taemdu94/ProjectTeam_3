@@ -1,13 +1,26 @@
+package com.team3.controller;
 
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+
+import dao.StoreDAO;
+import dto.StoreVO;
 
 @WebServlet("/storeInfoMng.do")
 public class storeInfoMngServlet extends HttpServlet {
@@ -17,7 +30,7 @@ public class storeInfoMngServlet extends HttpServlet {
 		response.setContentType("text/html;  charset=utf-8");
 		PrintWriter out = response.getWriter();
 
-		
+/*		
 		out.print("<html>");
 		out.print("<body>");
 		
@@ -61,11 +74,47 @@ public class storeInfoMngServlet extends HttpServlet {
 
 		out.print("</body>");
 		out.print("</html>");
-
+*/
 	
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		System.out.println("store_info in mng => doPost");
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html;  charset=utf-8");
+
+		
+		String Dir = "D:/billyyun/work/jsp__work/.metadata/.plugins/org.eclipse.wst.server.core/tmp1/wtpwebapps/test-project3/images/"; 
+		String userid = "btestid01"; //request.getParameter("b_userid");
+
+		String menu_info = request.getParameter("store_menu");			           //9 메뉴와 가격
+		System.out.println("request => menu_info => " + menu_info);
+		
+		
+		StoreDAO sDao = new StoreDAO();
+		StoreVO sVo = new StoreVO(); 
+		
+		sVo.setUserid(userid);
+		sVo.setMemu_info(menu_info);
+		
+		int result =  sDao.insertStoreInfo_Menu(sVo);
+
+		if(result == 1) {
+			System.out.println("insertStoreInfo_menu's result(등록 성공) : " + result);
+
+			//int result2 =  sDao.readReservationInfo(sVo);
+
+			//request.setAttribute("menu_info", menu_info);
+			
+			RequestDispatcher dispatcher = request.getRequestDispatcher("reser_mng.jsp");
+			dispatcher.forward(request, response);
+		}else{
+			System.out.println("insertStoreInfo's result(등록 실퍠) : " + result);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("reser_mng.jsp");
+			dispatcher.forward(request, response);
+		}
+	
 	}
 
 }

@@ -1,3 +1,4 @@
+package com.team3.controller;
 
 
 import java.io.File;
@@ -65,7 +66,7 @@ public class storeInfoRegiServlet extends HttpServlet {
 				encType,
 				new DefaultFileRenamePolicy());
 		
-		String Dir = "D:/billyyun/work/jsp_work/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/test-project3/images/"; 
+		String Dir = "D:/billyyun/work/jsp__work/.metadata/.plugins/org.eclipse.wst.server.core/tmp1/wtpwebapps/test-project3/images/"; 
 		
 		String userid = "btestid01"; //request.getParameter("b_userid");
 		
