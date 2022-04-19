@@ -47,13 +47,16 @@ public class ReservationDAO  {
 			
 			pstmt.setString(1, rVo.getUser_id());
 			pstmt.setInt(2, rVo.getResr_number());
-			pstmt.setString(3, rVo.getResr_number());
 			pstmt.setString(4, rVo.getResr_user_name());
 			pstmt.setString(5, rVo.getResr_user_tel());
 			pstmt.setString(6, rVo.getResr_store_name());
-			pstmt.setInt(7, rVo.getResr_user_degree());
-			pstmt.setString(8, rVo.getResr_user_name());
-			
+			pstmt.setString(7, rVo.getResr_date());
+			pstmt.setString(8, rVo.getResr_time());
+			pstmt.setString(9, rVo.getResr_store_need());
+			pstmt.setString(10, rVo.getResr_usingtime());
+			pstmt.setInt(11, rVo.getResr_person());
+			pstmt.setString(12, rVo.getResr_info());
+			pstmt.setString(13, rVo.getResr_before_info());
 			
 			
 			// 4. 쿼리 실행 및 결과 처리
