@@ -7,6 +7,7 @@ public class N_reservationVO {
 	private int resr_number;
 	private String resr_user_name;
 	private String resr_user_tel;
+	private String resr_store_name;
 	private Date resr_date;
 	private Date resr_time;
 	private String resr_store_need;
@@ -14,6 +15,7 @@ public class N_reservationVO {
 	private int resr_person;
 	private String resr_info;
 	private String resr_before_info;
+	
 	
 	
 	public String getUser_id() {
@@ -39,6 +41,12 @@ public class N_reservationVO {
 	}
 	public void setResr_user_tel(String resr_user_tel) {
 		this.resr_user_tel = resr_user_tel;
+	}
+	public String getResr_store_name() {
+		return resr_store_name;
+	}
+	public void setResr_store_name(String resr_store_name) {
+		this.resr_store_name = resr_store_name;
 	}
 	public Date getResr_date() {
 		return resr_date;
@@ -84,14 +92,14 @@ public class N_reservationVO {
 	}
 	
 	
+	
 	@Override
 	public String toString() {
 		return "N_reservationVO [user_id=" + user_id + ", resr_number=" + resr_number + ", resr_user_name="
-				+ resr_user_name + ", resr_user_tel=" + resr_user_tel + ", resr_date=" + resr_date + ", resr_time="
-				+ resr_time + ", resr_store_need=" + resr_store_need + ", resr_usingtime=" + resr_usingtime
-				+ ", resr_person=" + resr_person + ", resr_info=" + resr_info + ", resr_before_info=" + resr_before_info
-				+ "]";
+				+ resr_user_name + ", resr_user_tel=" + resr_user_tel + ", resr_store_name=" + resr_store_name
+				+ ", resr_date=" + resr_date + ", resr_time=" + resr_time + ", resr_store_need=" + resr_store_need
+				+ ", resr_usingtime=" + resr_usingtime + ", resr_person=" + resr_person + ", resr_info=" + resr_info
+				+ ", resr_before_info=" + resr_before_info + "]";
 	}
-	
 	
 }
