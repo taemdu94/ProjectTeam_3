@@ -1,11 +1,5 @@
 package com.team3.dto;
 
-import java.io.IOException;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.util.Date;
 
 public class ReservationVO {
@@ -13,13 +7,15 @@ public class ReservationVO {
 	private int resr_number;
 	private String resr_user_name;
 	private String resr_user_tel;
-	private int resr_user_degree;
-	private String store;
+	private String resr_store_name;
 	private Date resr_date;
 	private Date resr_time;
 	private String resr_store_need;
 	private Date resr_usingtime;
-
+	private int resr_person;
+	private String resr_info;
+	private String resr_before_info;
+	
 	public String getUser_id() {
 		return user_id;
 	}
@@ -44,17 +40,11 @@ public class ReservationVO {
 	public void setResr_user_tel(String resr_user_tel) {
 		this.resr_user_tel = resr_user_tel;
 	}
-	public int getResr_user_degree() {
-		return resr_user_degree;
+	public String getResr_store_name() {
+		return resr_store_name;
 	}
-	public void setResr_user_degree(int resr_user_degree) {
-		this.resr_user_degree = resr_user_degree;
-	}
-	public String getStore() {
-		return store;
-	}
-	public void setStore(String store) {
-		this.store = store;
+	public void setResr_store_name(String resr_store_name) {
+		this.resr_store_name = resr_store_name;
 	}
 	public Date getResr_date() {
 		return resr_date;
@@ -80,15 +70,35 @@ public class ReservationVO {
 	public void setResr_usingtime(Date resr_usingtime) {
 		this.resr_usingtime = resr_usingtime;
 	}
-	@Override
-	public String toString() {
-		return "ReservationVO [user_id=" + user_id + ", resr_number=" + resr_number + ", resr_user_name="
-				+ resr_user_name + ", resr_user_tel=" + resr_user_tel + ", resr_user_degree=" + resr_user_degree
-				+ ", store=" + store + ", resr_date=" + resr_date + ", resr_time=" + resr_time + ", resr_store_need="
-				+ resr_store_need + ", resr_usingtime=" + resr_usingtime + "]";
+	public int getResr_person() {
+		return resr_person;
+	}
+	public void setResr_person(int resr_person) {
+		this.resr_person = resr_person;
+	}
+	public String getResr_info() {
+		return resr_info;
+	}
+	public void setResr_info(String resr_info) {
+		this.resr_info = resr_info;
+	}
+	public String getResr_before_info() {
+		return resr_before_info;
+	}
+	public void setResr_before_info(String resr_before_info) {
+		this.resr_before_info = resr_before_info;
 	}
 	
 	
+	@Override
+	public String toString() {
+		return "ReservationVO [user_id=" + user_id + ", resr_number=" + resr_number + ", resr_user_name="
+				+ resr_user_name + ", resr_user_tel=" + resr_user_tel + ", resr_store_name=" + resr_store_name
+				+ ", resr_date=" + resr_date + ", resr_time=" + resr_time + ", resr_store_need=" + resr_store_need
+				+ ", resr_usingtime=" + resr_usingtime + ", resr_person=" + resr_person + ", resr_info=" + resr_info
+				+ ", resr_before_info=" + resr_before_info + "]";
+	}
+
 	
 	
 	

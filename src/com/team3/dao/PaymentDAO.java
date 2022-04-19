@@ -28,7 +28,7 @@ public class PaymentDAO  {
 	
 	
 	// Create (insert) - 회원 가입
-		public int insertPayment(PaymentVO rVo) {
+		public int insertPayment(PaymentVO payVo) {
 			String sql = "insert into payment values(payment_LPAD(seq.nextval, 4, 0),?,sysdate,?";
 			
 			int result = -1;
@@ -45,8 +45,9 @@ public class PaymentDAO  {
 //				stmt = conn.createStatement();
 				pstmt = conn.prepareStatement(sql);
 	
-				pstmt.setString(1, rVo.getPayment_type());
-				pstmt.setInt(2, rVo.getAmount());
+				pstmt.setString(1, payVo.getPayment_type());
+				pstmt.setInt(2, payVo.getAmount());
+				
 				// 4. 쿼리 실행 및 결과 처리
 				// executeUpdate(sql)	- insert update delete	
 				result = pstmt.executeUpdate();
