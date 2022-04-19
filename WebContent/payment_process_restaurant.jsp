@@ -27,7 +27,7 @@
   </head>
  
   <body>
-    
+    <form method ="post" action="payment.do">
     <!-- <header> -->
     
     <div class="container themed-container" style="background-color: #6ab1e4;">
@@ -164,7 +164,8 @@
           <button type="button" class="btn btn-secondary">회사소개</button>&nbsp;           
         </ul>
       </footer>
-    </div>   
+    </div>
+    </form>   
   </body>
 </html>      
 
