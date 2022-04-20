@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <!doctype html>
 <html lang="en">
@@ -147,22 +148,22 @@ table {
             &nbsp;
             &nbsp;
 
-            <form method="post" action="#" class="row g-3">
+            <form method="get" action="reserMng.do?query_date,query_degree" class="row g-3">
               <div class="col-4">
                 <label for="inputState" class="form-label">날짜별</label>
-                <select id="inputState" class="form-select">
-                  <option selected value="???">모레</option>
+                <select id="inputState" class="form-select" name="query_date">
                   <option selected value="tomorrow">내일</option>
                   <option selected value="today">오늘</option>
+                  <option selected value="all">전체</option>
                 </select>
               </div>  
               <div class="col-4">
                 <label for="inputState" class="form-label">등급별</label>
-                <select id="inputState" class="form-select">
-                  <option selected value="1">우수</option>
-                  <option selected value="-1">불량</option>
-                  <option selected value="0">일반</option>
-                  <option selected value="2">전체</option>
+                <select id="inputState" class="form-select" name="query_degree">
+                  <option selected value="2">우수</option>
+                  <option selected value="0">불량</option>
+                  <option selected value="1">일반</option>
+                  <option selected value="all">전체</option>
                 </select>
               </div>
               <div class="col-4" align="center" >
@@ -184,6 +185,7 @@ table {
                 </tr>
               </thead>
               <tbody>
+<!--               
                 <tr>
                   <th scope="row">001</th>
                   <td>정우진</td>
@@ -207,7 +209,25 @@ table {
                   <td>로얄룸</td>
                   <td>010-8020-5785</td>
                   <td>일반</td>
-                </tr>                
+                </tr>  
+-->                
+				<c:forEach var="list" items="${Reserlist}">
+					<tr>
+						<td>${list.resr_number}</td>
+						<td>${list.resr_user_name}</td>
+						<td>${list.resr_date}</td>
+						<td>${list.resr_info}</td>
+						<td>${list.resr_user_tel}</td>
+						<td> 
+						<c:choose>
+							<c:when test="${list.n_membership == 1}"> 우수 </c:when>
+							<c:when test="${list.n_membership == 0}"> 일반 </c:when>
+							<c:otherwise> 불량 </c:otherwise>
+						</c:choose>
+						</td>
+					</tr>
+				</c:forEach>
+                
               </tbody>
             </table>
             

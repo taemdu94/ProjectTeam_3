@@ -151,6 +151,64 @@ public class StoreDAO {
 			}
 			
 			return result;	
+		}
+
+		public String getStoreInfo_Name(String userid) {
+
+			String sql_select_info = "select store_name from store_info where user_id=?";
+			StoreVO sVo = null;
+		
+			sVo = new StoreVO(); 
+			
+			int result = -1;
+			String name;
+			
+			Connection conn = null;
+			PreparedStatement pstmt= null;
+			ResultSet rs = null;
+			
+			
+			try {
+				// 1. jdbc 드라이버 로드 : forName(className)
+				try {
+					Class.forName("oracle.jdbc.driver.OracleDriver");
+				} catch (ClassNotFoundException e) {
+					e.printStackTrace();
+				}
+				
+				// 2. 디비 접속을 위한 연결 객체 생성 : getConnection(url, user, password)
+				conn = DriverManager.getConnection(
+						"jdbc:oracle:thin:@localhost:1521:orcl",
+						"ora_user", 
+						"1234");
+		
+				// 3. 쿼리문을 실행하기 위한 객체 생성
+				pstmt = conn.prepareStatement(sql_select_info);
+				pstmt.setString(1, userid);
+				
+				// 4. 쿼리 실행 및 결과 처리
+				rs = pstmt.executeQuery();
+			
+				//
+				if(rs.next()) {
+					name = rs.getString("store_name");
+					name = name.trim();
+					System.out.println("store_name in getStoreInfo_Name = " + name);
+					return name;
+				}
+			} catch(SQLException e) {
+				e.printStackTrace();
+			} finally {
+				try {
+				if(rs != null)		rs.close();
+				if(pstmt != null)	pstmt.close();
+				if (conn != null)	conn.close();
+				} catch(SQLException e) {
+					e.printStackTrace();
+				}			
+			}
+			
+			return ""; //sVo.getStore_name(); 	
 		}	
 		
 		
