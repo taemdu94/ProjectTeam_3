@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.team3.dao.reservationDAO;
-import com.team3.dto.N_reservationVO;
+import com.team3.dao.ReservationDAO;
+import com.team3.dto.ReservationVO;
 import com.team3.dto.N_userVO;
 
 @WebServlet("/N_reservationServlet")
@@ -26,9 +26,9 @@ public class N_reservationServlet extends HttpServlet {
 		
 		String user_id = ((N_userVO) session.getAttribute("n_profile")).getUser_id();
 		
-		reservationDAO rdao = reservationDAO.getInstance();
+		ReservationDAO rdao = ReservationDAO.getInstance();
 		
-		List<N_reservationVO> reservationList = rdao.reservationList(user_id);
+		List<ReservationVO> reservationList = rdao.reservationList(user_id);
 
 		request.setAttribute("reservationList", reservationList);
 		
