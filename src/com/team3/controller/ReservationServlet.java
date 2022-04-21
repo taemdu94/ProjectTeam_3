@@ -3,6 +3,7 @@ package com.team3.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -30,13 +31,16 @@ public class ReservationServlet extends HttpServlet {
 		String url = "reservation_process_restaurant.jsp";
 
 		HttpSession session = request.getSession();
-		// 만약, 세션 속성이 유지되고 있는 동안(즉, 로그인 되어 있는 상태)에는 main.jsp 페이지로 이동한다.				
-		if (session.getAttribute("loginUser") != null) {
-			url = "reser_request_restaurant.jsp";
-			url = "reser_request_lodging.jsp";
-		}
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
+		String user_id = ((N_userVO) session.getAttribute("n_profile")).getUser_id();
+		
+		ReservationDAO rdao = ReservationDAO.getInstance();
+		
+		List<ReservationVO> reservationList = rdao.reservationList(user_id);
+
+		request.setAttribute("reservationList", reservationList);
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("reserve/reserve_history.jsp");
 		dispatcher.forward(request, response);
 		
 	}
