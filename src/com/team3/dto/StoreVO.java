@@ -107,5 +107,4 @@ public class StoreVO {
 				+ ", store_addr_detail=" + store_addr_detail + ", store_tel=" + store_tel + ", menu_info=" + menu_info
 				+ ", parking=" + parking + ", parking_detail=" + parking_detail + "]";
 	}
-
 }
