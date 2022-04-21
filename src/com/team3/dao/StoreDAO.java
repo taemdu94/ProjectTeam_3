@@ -52,7 +52,7 @@ public class StoreDAO {
 				pstmt.setString(2, sVo.getStore_photo1());
 				pstmt.setString(3, sVo.getStore_photo2());
 				pstmt.setString(4, sVo.getStore_photo3());
-				pstmt.setString(5, sVo.getStore_name());
+				pstmt.setString(5, sVo.getStore_name().trim());
 				pstmt.setString(6, sVo.getStore_type());
 				pstmt.setString(7, sVo.getStore_time());
 				pstmt.setString(8, sVo.getStore_time_w());
@@ -74,7 +74,7 @@ public class StoreDAO {
 				System.out.println("9.sVo.getStore_addr() =>" + sVo.getStore_addr());
 				System.out.println("10.sVo.getStore_addr_detail() =>" + sVo.getStore_addr_detail());
 				System.out.println("11.sVo.getStore_tel() =>" + sVo.getStore_tel());
-				//System.out.println("12.sVo.getMemu_info() =>" + sVo.getMemu_info());
+				//System.out.println("12.sVo.getMenu_info() =>" + sVo.getMenu_info());
 				System.out.println("12.sVo.getParking() =>" + sVo.getParking());
 				System.out.println("13.sVo.getParking_detail() =>" + sVo.getParking_detail());
 				
@@ -125,10 +125,10 @@ public class StoreDAO {
 		
 				// 3. 쿼리문을 실행하기 위한 객체 생성
 				pstmt = conn.prepareStatement(sql_insert_pstmt);
-				pstmt.setString(1, sVo.getMemu_info());
+				pstmt.setString(1, sVo.getMenu_info());
 				pstmt.setString(2, sVo.getUserid());
 			
-				System.out.println("1.sVo.getMemu_info() =>" + sVo.getMemu_info());
+				System.out.println("1.sVo.getMenu_info() =>" + sVo.getMenu_info());
 				System.out.println("2.sVo.getUserid() =>" + sVo.getUserid());
 				
 				// 4. 쿼리 실행 및 결과 처리
@@ -195,6 +195,65 @@ public class StoreDAO {
 					name = name.trim();
 					System.out.println("store_name in getStoreInfo_Name = " + name);
 					return name;
+				}
+			} catch(SQLException e) {
+				e.printStackTrace();
+			} finally {
+				try {
+				if(rs != null)		rs.close();
+				if(pstmt != null)	pstmt.close();
+				if (conn != null)	conn.close();
+				} catch(SQLException e) {
+					e.printStackTrace();
+				}			
+			}
+			
+			return ""; //sVo.getStore_name(); 	
+		}
+
+		public String getStoreInfo_Type(String userid) {
+
+			
+			String sql_select_info = "select store_type from store_info where user_id=?";
+			StoreVO sVo = null;
+		
+			sVo = new StoreVO(); 
+			
+			int result = -1;
+			String type;
+			
+			Connection conn = null;
+			PreparedStatement pstmt= null;
+			ResultSet rs = null;
+			
+			
+			try {
+				// 1. jdbc 드라이버 로드 : forName(className)
+				try {
+					Class.forName("oracle.jdbc.driver.OracleDriver");
+				} catch (ClassNotFoundException e) {
+					e.printStackTrace();
+				}
+				
+				// 2. 디비 접속을 위한 연결 객체 생성 : getConnection(url, user, password)
+				conn = DriverManager.getConnection(
+						"jdbc:oracle:thin:@localhost:1521:orcl",
+						"ora_user", 
+						"1234");
+		
+				// 3. 쿼리문을 실행하기 위한 객체 생성
+				pstmt = conn.prepareStatement(sql_select_info);
+				pstmt.setString(1, userid);
+				
+				// 4. 쿼리 실행 및 결과 처리
+				rs = pstmt.executeQuery();
+			
+				//
+				if(rs.next()) {
+					type = rs.getString("store_type");
+					type = type.trim();
+					System.out.println("store_type in getStoreInfo_Type = " + type);
+					return type;
 				}
 			} catch(SQLException e) {
 				e.printStackTrace();

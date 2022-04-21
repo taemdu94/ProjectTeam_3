@@ -44,7 +44,7 @@ public class ReservationDAO {
 	
 			// 3. 쿼리문을 실행하기 위한 객체 생성
 			pstmt = conn.prepareStatement(sql_select_info);
-			pstmt.setString(1, store_name);
+			pstmt.setString(1, store_name.trim());
 			
 			
 			// 4. 쿼리 실행 및 결과 처리
@@ -86,8 +86,23 @@ public class ReservationDAO {
 	}
 
 	public List<ReserMngVO> getReserInfo(String store_name, String query_date, String query_degree) {
-
-		String sql_select_info = "select ri.resr_number, ri.resr_user_name, ri.resr_date, ri.resr_info, ri.resr_user_tel, nu.n_membership from reservation_info ri, n_user nu where resr_store_name=? and ri.user_id = nu.user_id and ri.date=? and nu.degree=? ";
+		
+		
+		System.out.println("store_name in getReserInfo(,,) = " + store_name);
+		System.out.println("query_date in getReserInfo(,,) = " + query_date);
+		System.out.println("query_degree in getReserInfo(,,) = " + query_degree);
+		
+		String sql_select_info = "";
+		
+		if(query_date.equals("all") && query_degree.equals("all")) {
+			sql_select_info = "select ri.resr_number, ri.resr_user_name, ri.resr_date, ri.resr_info, ri.resr_user_tel, nu.n_membership from reservation_info ri, n_user nu where resr_store_name=? and ri.user_id = nu.user_id";
+		}else if(query_date.equals("all")){
+			sql_select_info = "select ri.resr_number, ri.resr_user_name, ri.resr_date, ri.resr_info, ri.resr_user_tel, nu.n_membership from reservation_info ri, n_user nu where resr_store_name=? and ri.user_id = nu.user_id and nu.n_membership=? ";
+		}else if(query_degree.equals("all")){
+			sql_select_info = "select ri.resr_number, ri.resr_user_name, ri.resr_date, ri.resr_info, ri.resr_user_tel, nu.n_membership from reservation_info ri, n_user nu where resr_store_name=? and ri.user_id = nu.user_id and ri.resr_date=?";
+		}else {
+			sql_select_info = "select ri.resr_number, ri.resr_user_name, ri.resr_date, ri.resr_info, ri.resr_user_tel, nu.n_membership from reservation_info ri, n_user nu where resr_store_name=? and ri.user_id = nu.user_id and ri.resr_date=? and nu.n_membership=? ";
+		}
 		
 		int result = -1;
 		String name;
@@ -116,8 +131,19 @@ public class ReservationDAO {
 	
 			// 3. 쿼리문을 실행하기 위한 객체 생성
 			pstmt = conn.prepareStatement(sql_select_info);
-			pstmt.setString(1, store_name);
-			
+			if(query_date.equals("all") && query_degree.equals("all")) {
+				pstmt.setString(1, store_name.trim());
+			}else if(query_date.equals("all")){
+				pstmt.setString(1, store_name.trim());
+				pstmt.setString(2, query_degree);
+			}else if(query_degree.equals("all")){
+				pstmt.setString(1, store_name.trim());
+				pstmt.setString(2, query_date);
+			}else {
+				pstmt.setString(1, store_name.trim());
+				pstmt.setString(2, query_date);
+				pstmt.setString(3, query_degree);
+			}
 			
 			// 4. 쿼리 실행 및 결과 처리
 			rs = pstmt.executeQuery();

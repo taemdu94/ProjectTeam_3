@@ -1,3 +1,4 @@
+package com.team3.controller;
 
 
 import java.io.File;
@@ -101,7 +102,11 @@ public class storeInfoRegiServlet extends HttpServlet {
 		    e.printStackTrace();
 		}	
 
-		String store_name = multi.getParameter("store_name");        		   //2 업체 이름
+		String store_name_temp = multi.getParameter("store_name");        		   //2 업체 이름
+		String store_name = store_name_temp.replace(" ", "");
+		
+		System.out.println("multi => store_name  after trim() => " + store_name);
+		
 		String store_type = multi.getParameter("store_type");				   //3 업종 선택
 		String time_day = multi.getParameter("time_day");					   //4 운영 시간 - 평일
 		String time_week = multi.getParameter("time_week");					   //5 운영 시간 - 주말

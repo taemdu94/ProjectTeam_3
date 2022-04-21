@@ -1,3 +1,4 @@
+package com.team3.controller;
 
 
 import java.io.IOException;
@@ -95,10 +96,18 @@ public class storeInfoMngServlet extends HttpServlet {
 		StoreVO sVo = new StoreVO(); 
 		
 		sVo.setUserid(userid);
-		sVo.setMemu_info(menu_info);
+		sVo.setMenu_info(menu_info);
 		
 		int result =  sDao.insertStoreInfo_Menu(sVo);
 
+		//
+		String storeType =  sDao.getStoreInfo_Type(userid);
+		storeType = storeType.trim();
+		
+		request.setAttribute("storeType", storeType);
+		System.out.println(storeType);
+		
+		
 		if(result == 1) {
 			System.out.println("insertStoreInfo_menu's result(등록 성공) : " + result);
 

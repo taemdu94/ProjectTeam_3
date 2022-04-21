@@ -312,7 +312,7 @@ function showImage(input) {
                 <label type="text" class="btn btn-light"  >메뉴와 가격을 연속해서 입력하시면 됩니다.</button>
                 <div class="form-floating">
                   <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 300px" name="store_menu"></textarea>
-                  <label for="floatingTextarea2">[메뉴명][공백][메뉴가격][공백]</label>
+                  <label for="floatingTextarea2">[메뉴명][공백][메뉴가격][,][공백]</label>
                 </div>
               </div> 
             </div>

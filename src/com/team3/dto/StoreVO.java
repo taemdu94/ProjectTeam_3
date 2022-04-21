@@ -13,10 +13,9 @@ public class StoreVO {
 	private String store_addr;
 	private String store_addr_detail;
 	private String store_tel;
-	private String memu_info;
+	private String menu_info;
 	private String parking;
 	private String parking_detail;
-
 	public String getUserid() {
 		return userid;
 	}
@@ -83,11 +82,11 @@ public class StoreVO {
 	public void setStore_tel(String store_tel) {
 		this.store_tel = store_tel;
 	}
-	public String getMemu_info() {
-		return memu_info;
+	public String getMenu_info() {
+		return menu_info;
 	}
-	public void setMemu_info(String memu_info) {
-		this.memu_info = memu_info;
+	public void setMenu_info(String menu_info) {
+		this.menu_info = menu_info;
 	}
 	public String getParking() {
 		return parking;
@@ -101,15 +100,14 @@ public class StoreVO {
 	public void setParking_detail(String parking_detail) {
 		this.parking_detail = parking_detail;
 	}
-
+	
 	@Override
 	public String toString() {
 		return "StoreVO [userid=" + userid + ", store_photo1=" + store_photo1 + ", store_photo2=" + store_photo2
 				+ ", store_photo3=" + store_photo3 + ", store_name=" + store_name + ", store_type=" + store_type
 				+ ", store_time=" + store_time + ", store_time_w=" + store_time_w + ", store_addr=" + store_addr
-				+ ", store_addr_detail=" + store_addr_detail + ", store_tel=" + store_tel + ", memu_info=" + memu_info
+				+ ", store_addr_detail=" + store_addr_detail + ", store_tel=" + store_tel + ", menu_info=" + menu_info
 				+ ", parking=" + parking + ", parking_detail=" + parking_detail + "]";
 	}
-
-
+	
 }

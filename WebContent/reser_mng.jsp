@@ -126,7 +126,7 @@ table {
 
             <div class="col-4" style="width: auto;">
               <div class="d-grid gap-2">&nbsp;
-                <button class="btn btn-primary" type="button">예약관리 서비스</button>&nbsp;
+                <button class="btn btn-primary" type="button" onclick="location.href='reserMng.do'">예약관리 서비스</button>&nbsp;
                 <button class="btn btn-secondary" type="button">매장정보 서비스</button>&nbsp;
                 <button class="btn btn-secondary" type="button">회원탈퇴</button>&nbsp;
               </div> 
@@ -142,13 +142,13 @@ table {
 
             <ul class="nav nav-tabs">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" >숙박업</a>
+                <a class="nav-link active" aria-current="page" >${storeType}</a>
               </li>
             </ul>
             &nbsp;
             &nbsp;
 
-            <form method="get" action="reserMng.do?query_date,query_degree" class="row g-3">
+            <form method="post" action="reserMng.do?query_date,query_degree" class="row g-3">
               <div class="col-4">
                 <label for="inputState" class="form-label">날짜별</label>
                 <select id="inputState" class="form-select" name="query_date">
@@ -220,9 +220,10 @@ table {
 						<td>${list.resr_user_tel}</td>
 						<td> 
 						<c:choose>
-							<c:when test="${list.n_membership == 1}"> 우수 </c:when>
-							<c:when test="${list.n_membership == 0}"> 일반 </c:when>
-							<c:otherwise> 불량 </c:otherwise>
+							<c:when test="${list.n_membership == 2}"> 우수 </c:when>
+							<c:when test="${list.n_membership == 1}"> 일반 </c:when>
+							<c:when test="${list.n_membership == 0}"> 불량 </c:when>
+							<c:otherwise> 없음 </c:otherwise>
 						</c:choose>
 						</td>
 					</tr>
