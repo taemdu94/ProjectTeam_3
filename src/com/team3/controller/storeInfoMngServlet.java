@@ -89,7 +89,7 @@ public class storeInfoMngServlet extends HttpServlet {
 		StoreVO sVo = new StoreVO(); 
 		
 		sVo.setUserid(userid);
-		sVo.setMemu_info(menu_info);
+		sVo.setMenu_info(menu_info);
 		
 		int result =  sDao.insertStoreInfo_Menu(sVo);
 

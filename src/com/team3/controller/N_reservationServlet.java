@@ -1,7 +1,7 @@
 package com.team3.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -21,17 +21,16 @@ public class N_reservationServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		response.setContentType("text/html; charset=utf-8");
+		response.setContentType("text/html; charset=UTF-8");
 		HttpSession session = request.getSession();
 		
 		String user_id = ((N_userVO) session.getAttribute("n_profile")).getUser_id();
 		
-		reservationDAO mDao = reservationDAO.getInstance();
+		reservationDAO rdao = reservationDAO.getInstance();
 		
-		N_reservationVO nrvo = mDao.n_reservation(user_id);
-		
-		session.setAttribute("reservation", nrvo);
-		
+		List<N_reservationVO> reservationList = rdao.reservationList(user_id);
+
+		request.setAttribute("reservationList", reservationList);
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("reserve/reserve_history.jsp");
 		dispatcher.forward(request, response);

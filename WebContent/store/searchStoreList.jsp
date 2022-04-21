@@ -94,23 +94,23 @@
 
 		</div>
 		<hr>
-		<table class="table table-hover" border="1">
+		${message}
+
+		<table class="table" border="1">
 			<tr>
 				<th>대표이미지</th>
 				<th>업체명</th>
 				<th>업종</th>
 				<th>주소</th>
 			</tr>
-			<c:forEach var="store" items="${searchStore}">
-				<tr >
-					<td><a href="storeDetail.do?store_name=${store.store_name}">
-							<img src="${store.store_photo1}" alt="" style="height: 150px"
-							width="200px" /></td>
-					<td><a href="storeDetail.do?store_name=${store.store_name}">${store.store_name}</td>
-					<td>${store.store_type}</td>
-					<td>${store.store_addr}</td>
+			<c:forEach var="Store_info" items="${searchStoreList}">
+				<tr>
+					<td>${store_info.store_photo1}</td>
+					<td>${store_info.store_name}</td>
+					<td>${store_info.store_type}</td>
+					<td>${store_info.col_date}</td>
+					<td><a href="storeDetail.do?store_name=${store_info.store_name}">상세페이지</a></td>
 				</tr>
-		
 			</c:forEach>
 		</table>
 
@@ -132,4 +132,4 @@
 		</div>
 </body>
 </html>
->>>>>>> refs/remotes/origin/part2
+
