@@ -108,3 +108,4 @@ public class StoreVO {
 				+ ", parking=" + parking + ", parking_detail=" + parking_detail + "]";
 	}
 }
+
