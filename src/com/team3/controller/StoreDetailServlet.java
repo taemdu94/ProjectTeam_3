@@ -22,9 +22,9 @@ public class StoreDetailServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
+		
 		//상품 이름 가져와서 조회한 내용 출력
 		String store_name = request.getParameter("store_name");
-		
 		StoreDAO sDao = StoreDAO.getInstance();
 		StoreVO sVo = new StoreVO();
 		
