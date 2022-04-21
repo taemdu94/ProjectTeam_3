@@ -32,17 +32,6 @@ public class ReservationServlet extends HttpServlet {
 
 		HttpSession session = request.getSession();
 		
-		String user_id = ((N_userVO) session.getAttribute("n_profile")).getUser_id();
-		
-		ReservationDAO rdao = ReservationDAO.getInstance();
-		
-		List<ReservationVO> reservationList = rdao.reservationList(user_id);
-
-		request.setAttribute("reservationList", reservationList);
-		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("reserve/reserve_history.jsp");
-		dispatcher.forward(request, response);
-		
 	}
 
 
@@ -52,7 +41,9 @@ public class ReservationServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();		
 		
 		ReservationVO rVo = new ReservationVO();
-	
+		
+		System.out.println("resr_store_name");
+		
 		try {
 		
 			String user_id = request.getParameter("user_id");
