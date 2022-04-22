@@ -102,7 +102,6 @@
 				<th>주소</th>
 			</tr>
 			<c:forEach var="store" items="${searchStore}">
-			
 				<tr >
 					<td><a href="storeDetail.do?store_name=${store.store_name}">
 							<img src="${store.store_photo1}" alt="" style="height: 150px"

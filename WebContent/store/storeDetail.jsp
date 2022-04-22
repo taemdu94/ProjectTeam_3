@@ -164,45 +164,44 @@
 						<thead class="table-success">
 						<tbody>
 						<thead>
-						<c:forEach var="menuList" items="${menu}">
-							<tr>
-								<th>${menuList}</th>
-								
-							</tr>
-						</c:forEach>
+							<c:forEach var="menuList" items="${menu}">
+								<tr>
+									<th>${menuList}</th>
+
+								</tr>
+							</c:forEach>
 						</thead>
 						</tbody>
 						</thead>
 					</table>
-					</div>
-					<form action="./reserveLoginCheck.do">
-						<div class="p-3" style="height: 100px"></div>
-						<div class="d-grid col-3 mx-auto" style="height: 60px">
-							<button class="btn btn-primary" type="submit">예약하기</button>
-					</form>
-				
+				</div>
+				<div class="p-3" style="height: 100px"></div>
+				<div class="d-grid col-3 mx-auto" style="height: 60px">
+					<a href="reserveLoginCheck.do?store_type=${store.store_type}">
+						<button class="btn btn-primary" type="submit">예약하기</button>
+					</a>
+				</div>
+
 			</div>
-
+			<!-- /.row -->
 		</div>
-		<!-- /.row -->
-	</div>
-	<!-- /.container -->
+		<!-- /.container -->
 
-	<!-- <footer> -->
-	<div class="p-3"></div>
+		<!-- <footer> -->
+		<div class="p-3"></div>
 
-	<div class="container themed-container"
-		style="background-color: #dfe3e6;">
-		<footer
-			class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+		<div class="container themed-container"
+			style="background-color: #dfe3e6;">
+			<footer
+				class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
 
-			<ul class="nav nav-pills">
-				<button type="button" class="btn btn-secondary">고객센터</button>
-				&nbsp;
-				<button type="button" class="btn btn-secondary">회사소개</button>
-				&nbsp;
-			</ul>
-		</footer>
-	</div>
+				<ul class="nav nav-pills">
+					<button type="button" class="btn btn-secondary">고객센터</button>
+					&nbsp;
+					<button type="button" class="btn btn-secondary">회사소개</button>
+					&nbsp;
+				</ul>
+			</footer>
+		</div>
 </body>
 </html>

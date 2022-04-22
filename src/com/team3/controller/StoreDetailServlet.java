@@ -25,6 +25,7 @@ public class StoreDetailServlet extends HttpServlet {
 		
 		//상품 이름 가져와서 조회한 내용 출력
 		String store_name = request.getParameter("store_name");
+		System.out.println(store_name + "ddddddd가게이름");
 		StoreDAO sDao = StoreDAO.getInstance();
 		StoreVO sVo = new StoreVO();
 		
