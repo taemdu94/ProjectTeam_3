@@ -187,7 +187,7 @@
 							</tr>
 						</tbody>
 					</table>
-					<form action="./reserveLoginCheck.do">
+					<form action="reser_request_restaurant.jsp">
 						<div class="p-3" style="height: 100px"></div>
 						<div class="d-grid col-3 mx-auto" style="height: 60px">
 							<button class="btn btn-primary" type="submit">예약하기</button>

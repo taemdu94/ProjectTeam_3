@@ -59,7 +59,7 @@
                     </li>
                     <li class="list-group-item">인원 수 &nbsp; <input type="number" id="carousel_number" min=1 max=10 value="1" name="resr_person" > </li>
                     <li class="list-group-item">요청사항 <br>
-                        <textarea class="col-12">${reservation_info.resr_before_info}</textarea></li>
+                        <textarea class="col-12"></textarea></li>
                   </ul>
                 </div>
                 <div class="col-2"> </div>
@@ -67,7 +67,7 @@
               <div class="col">
                     <ul class="list-group">
                         <li class="list-group-item text-center" style="background-color: skyblue; ">예약 시 안내 사항</li>
-                        <textarea style="height: 220px;"><h4>${reservation_info.resr_store_need}</h4> </textarea>   
+                        <textarea style="height: 220px;"> </textarea>   
                     </ul>
                 </div>
             </div>
@@ -89,7 +89,7 @@
                               <tbody>
                                 <tr>
                                   <th scope="row">1</th>
-                                  <td>${reservation_info.resr_info }</td>
+                                  <td></td>
                                   
                                   <td><div class="form-check">
                                     <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
@@ -100,7 +100,7 @@
                                 </tr>
                                 <tr>
                                   <th scope="row">2</th>
-                                  <td>${reservation_info.resr_info }</td>
+                                  <td></td>
                                  
                                   <td><div class="form-check">
                                     <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
@@ -111,7 +111,7 @@
                                 </tr>
                                 <tr>
                                   <th scope="row">3</th>
-                                  <td>${reservation_info.resr_info }</td>
+                                  <td></td>
                                   
                                   <td><div class="form-check">
                                     <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
@@ -130,7 +130,7 @@
                   <div class="col">
                         <ul class="list-group">
                             <li class="list-group-item text-center" style="background-color: skyblue; ">예약부도 시 패널티 약관</li>
-                            <textarea style="height: 220px;"><h4>${reservation_info.resr_store_need}</h4>
+                            <textarea style="height: 220px;">
                             </textarea>
                             <p>동의하시겠습니까? <input class="form-check-input " type="checkbox" value="" id="flexCheckDefault">
                                 <label class="form-check-label" for="flexCheckDefault"></p>
