@@ -170,9 +170,12 @@
 						</thead>
 						<tbody>
 							<tr>
-							<c:forEach var="store" items="${searchStore}">
-								<th>${store.menu_info}</th>
-							</c:forEach>
+				
+							${menu1}
+							${menu2}
+							${menu3}
+							${menu4}
+						
 							</tr>
 						</tbody>
 					</table>
