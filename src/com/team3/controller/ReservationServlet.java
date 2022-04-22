@@ -40,12 +40,15 @@ public class ReservationServlet extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();		
 		
+		ReservationDAO rDao = ReservationDAO.getInstance();
+		System.out.println("실패1");
 		ReservationVO rVo = new ReservationVO();
-		
-		System.out.println("resr_store_name");
+		System.out.println("실패2");
 		
 		try {
 		
+			
+			
 			String user_id = request.getParameter("user_id");
 			
 			String resr_user_name = request.getParameter("resr_user_name");
@@ -58,20 +61,10 @@ public class ReservationServlet extends HttpServlet {
 			String resr_info = request.getParameter("resr_info");
 			String resr_before_info = request.getParameter("resr_before_info");
 			
-			System.out.println("user_id");
-			System.out.println("resr_number");
-			System.out.println("resr_user_name");
-			System.out.println("resr_store_name");
-			System.out.println("resr_date");
-			System.out.println("resr_time");
-			System.out.println("resr_store_need");
-			System.out.println("resr_usingtime");
-			System.out.println("resr_person");
-			System.out.println("resr_info");
-			System.out.println("resr_before_info");
+			System.out.println("실패3");
+			System.out.println(rVo.getResr_store_name());
 			
 			rVo.setUser_id(user_id);
-			
 			rVo.setResr_user_name(resr_user_name);
 			rVo.setResr_store_name(resr_store_name);
 			rVo.setResr_date(resr_date);
@@ -86,8 +79,6 @@ public class ReservationServlet extends HttpServlet {
 			System.out.println("예외 발생 : " + e);
 		}
 		
-	
-		ReservationDAO rDao = ReservationDAO.getInstance();
 		
 		int result = rDao.insertReservation(rVo);
 		

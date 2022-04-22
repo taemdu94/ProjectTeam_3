@@ -106,9 +106,9 @@ public class ReservationDAO  {
 	public int insertReservation(ReservationVO rVo) {
 		
 		String sql = "insert into reservation_info values(?,reservation_info_seq.nextval(4,0),?,?,?,?,?,?";
-		
+		System.out.println("실패1");
 		int result = -1;
-		
+		System.out.println("실패2");
 		Connection conn = null;
 		PreparedStatement pstmt= null;
 		
@@ -116,14 +116,14 @@ public class ReservationDAO  {
 			// 1. jdbc 드라이버 로드 : forName(className)
 			// 2. 디비 접속을 위한 연결 객체 생성 : getConnection(url, user, password)
 			conn = DBManager.getConnection();
-			
+			System.out.println("실패3");
 			
 			// 3. 쿼리문을 실행하기 위한 객체 생성
 //			stmt = conn.createStatement();
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setDate(1, rVo.getResr_date());
-			
+			System.out.println("실패4");
 			pstmt.setDate(2, rVo.getResr_time());
 			pstmt.setString(3, rVo.getResr_store_need());	
 			pstmt.setDate(4, rVo.getResr_usingtime());
@@ -131,11 +131,11 @@ public class ReservationDAO  {
 			pstmt.setString(6, rVo.getResr_info());
 			pstmt.setString(7, rVo.getResr_before_info());
 			
-			
+			System.out.println("실패5");
 			// 4. 쿼리 실행 및 결과 처리
 			// executeUpdate(sql)	- insert update delete	
 			result = pstmt.executeUpdate();
-			
+			System.out.println("실패6");
 		} catch(SQLException e) {
 			e.printStackTrace();
 		} finally {

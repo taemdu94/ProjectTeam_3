@@ -27,7 +27,7 @@
   </head>
  
   <body>
-     <form method ="post" action="reservation.do">
+     <form method ="post" action="Reservation.do">
     <!-- <header> -->
     
     <div class="container themed-container" style="background-color: #6ab1e4;">
