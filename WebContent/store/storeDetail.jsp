@@ -162,19 +162,18 @@
 					<h4>메뉴</h4>
 					<table class="table">
 						<thead class="table-success">
+						<tbody>
+						<thead>
 							<tr>
-								<th scope="col">메뉴/ 가격</th>
+								<th>${menu1}</th>
+								<th>${menu2}</th>
+								<th>${menu3}</th>
+								<th>${menu4}</th>
 							</tr>
 						</thead>
-						<tbody>
-							<tr>
-							<tr>${menu1}</tr>
-							<tr>${menu2}</tr>
-							<tr>${menu3}</tr>
-							<tr>${menu4}</tr>
-							
-							</tr>
 						</tbody>
+
+						</thead>
 					</table>
 					<form action="./reserveLoginCheck.do">
 						<div class="p-3" style="height: 100px"></div>
