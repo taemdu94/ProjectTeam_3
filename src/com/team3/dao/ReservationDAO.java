@@ -104,9 +104,9 @@ public class ReservationDAO  {
 
 
 	public int insertReservation(ReservationVO rVo) {
-		System.out.println("실패1");
-		String sql = "insert into reservation_info values(?,reservation_seq.nextval,?,?,?,?,?,?,?,?,?,?)";
-		System.out.println("실패2");
+		
+		String sql = "insert into reservation_info values('testid',reservation_seq.nextval,'vava','010-111-111',?,?,?,?,?,?,?,?)";
+		
 		int result = -1;
 		
 		Connection conn = null;
@@ -121,23 +121,21 @@ public class ReservationDAO  {
 			// 3. 쿼리문을 실행하기 위한 객체 생성
 //			stmt = conn.createStatement();
 			pstmt = conn.prepareStatement(sql);
-			System.out.println("실패3");
 			
+			//pstmt.setString(1,rVo.getUser_id());
 			
-			pstmt.setString(1,rVo.getUser_id());
-			pstmt.setInt(2,rVo.getResr_number());
-			pstmt.setString(3, rVo.getResr_user_tel());
-			pstmt.setString(4, rVo.getResr_store_name());
-			pstmt.setDate(5, rVo.getResr_date());
-			pstmt.setDate(6, rVo.getResr_time());
-			pstmt.setString(7, rVo.getResr_store_need());	
-			pstmt.setDate(8, rVo.getResr_usingtime());
-			pstmt.setInt(9, rVo.getResr_person());
-			pstmt.setString(10, rVo.getResr_info());
-			pstmt.setString(11, rVo.getResr_before_info());
-			
-			System.out.println("실패4");
-			
+			//pstmt.setString(1,rVo.getResr_user_name());
+			//pstmt.setString(1, rVo.getResr_user_tel());
+			pstmt.setString(1, rVo.getResr_store_name());
+			pstmt.setDate(2, rVo.getResr_date());
+			pstmt.setDate(3, rVo.getResr_time());
+			pstmt.setString(4, rVo.getResr_store_need());	
+			pstmt.setDate(5, rVo.getResr_usingtime());
+			pstmt.setInt(6, rVo.getResr_person());
+			pstmt.setString(7, rVo.getResr_info());
+			pstmt.setString(8, rVo.getResr_before_info());
+
+			System.out.println("DAO로 넘어오나?"+rVo);
 			
 			// 4. 쿼리 실행 및 결과 처리
 			// executeUpdate(sql)	- insert update delete	
