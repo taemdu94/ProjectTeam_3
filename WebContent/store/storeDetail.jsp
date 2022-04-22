@@ -158,24 +158,21 @@
 						</p>
 					</div>
 				</div>
-				<div class="col-lg-9">
+				<div class="col-lg-6">
 					<h4>메뉴</h4>
 					<table class="table">
 						<thead class="table-success">
 							<tr>
-								<th scope="col">메뉴명</th>
-								<th scope="col">가격</th>
-								<th scope="col">비고</th>
+								<th scope="col">메뉴/ 가격</th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr>
-				
-							${menu1}
-							${menu2}
-							${menu3}
-							${menu4}
-						
+							<tr>${menu1}</tr>
+							<tr>${menu2}</tr>
+							<tr>${menu3}</tr>
+							<tr>${menu4}</tr>
+							
 							</tr>
 						</tbody>
 					</table>
