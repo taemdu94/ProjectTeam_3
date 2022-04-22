@@ -15,6 +15,7 @@ public class StoreVO {
 	private String menu_info;
 	private String parking;
 	private String parking_detail;
+	
 	public String getUserid() {
 		return userid;
 	}
