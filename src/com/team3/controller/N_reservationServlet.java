@@ -12,31 +12,33 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.team3.dao.ReservationDAO;
-import com.team3.dto.ReservationVO;
 import com.team3.dto.N_userVO;
+import com.team3.dto.ReservationVO;
 
 @WebServlet("/N_reservationServlet")
 public class N_reservationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		HttpSession session = request.getSession();
-		
+
 		String user_id = ((N_userVO) session.getAttribute("n_profile")).getUser_id();
-		
+
 		ReservationDAO rdao = ReservationDAO.getInstance();
-		
+
 		List<ReservationVO> reservationList = rdao.reservationList(user_id);
 
 		request.setAttribute("reservationList", reservationList);
-		
+
 		RequestDispatcher dispatcher = request.getRequestDispatcher("reserve/reserve_history.jsp");
 		dispatcher.forward(request, response);
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
 	}
 

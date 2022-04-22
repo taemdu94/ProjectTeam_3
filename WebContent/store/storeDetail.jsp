@@ -158,41 +158,29 @@
 						</p>
 					</div>
 				</div>
-				<div class="col-lg-9">
-
+				<div class="col-lg-3">
 					<h4>메뉴</h4>
 					<table class="table">
 						<thead class="table-success">
-							<tr>
-								<th scope="col">메뉴명</th>
-								<th scope="col">가격</th>
-								<th scope="col">비고</th>
-							</tr>
-						</thead>
 						<tbody>
+						<thead>
+						<c:forEach var="menuList" items="${menu}">
 							<tr>
-								<td>${store.menu_info}</td>
-								<td>7,000</td>
-								<td></td>
+								<th>${menuList}</th>
+								
 							</tr>
-							<tr>
-								<td>짬뽕</td>
-								<td>9,000</td>
-								<td></td>
-							</tr>
-							<tr>
-								<td>탕수육</td>
-								<td>18,000</td>
-								<td></td>
-							</tr>
+						</c:forEach>
+						</thead>
 						</tbody>
+						</thead>
 					</table>
+					</div>
 					<form action="./reserveLoginCheck.do">
 						<div class="p-3" style="height: 100px"></div>
 						<div class="d-grid col-3 mx-auto" style="height: 60px">
 							<button class="btn btn-primary" type="submit">예약하기</button>
 					</form>
-				</div>
+				
 			</div>
 
 		</div>
