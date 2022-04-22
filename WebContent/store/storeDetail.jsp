@@ -174,12 +174,13 @@
 						</tbody>
 						</thead>
 					</table>
+					</div>
 					<form action="./reserveLoginCheck.do">
 						<div class="p-3" style="height: 100px"></div>
 						<div class="d-grid col-3 mx-auto" style="height: 60px">
 							<button class="btn btn-primary" type="submit">예약하기</button>
 					</form>
-				</div>
+				
 			</div>
 
 		</div>

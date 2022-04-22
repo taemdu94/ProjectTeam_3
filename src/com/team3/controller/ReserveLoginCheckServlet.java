@@ -1,4 +1,4 @@
-package com.team3;
+package com.team3.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -26,7 +26,7 @@ public class ReserveLoginCheckServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 
 		if (session.getAttribute("login") == "1") {
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/reserve/reserStore.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("./reserve/reserStore.jsp");
 			dispatcher.forward(request, response);
 		} else {
 			out.print("<script>");
