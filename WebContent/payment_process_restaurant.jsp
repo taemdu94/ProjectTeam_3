@@ -66,7 +66,7 @@
               <div class="col">
                     <ul class="list-group">
                         <li class="list-group-item text-center" style="background-color: skyblue; ">결제 시 안내 사항</li>
-                        <td>${reservation_info.resr_store_need }</td>
+                        <td><h4>${reservation_info.resr_store_need }</h4></td>
                     </ul>
                 </div>
               </div>

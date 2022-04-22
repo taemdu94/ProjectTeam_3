@@ -51,18 +51,18 @@
             <div class="col">
                 <ul class="list-group">
                     <li class="list-group-item text-center" style="background-color: skyblue;"> 업체명</li>
-                    <li class="list-group-item">예약한 날짜 <input type="date"><br>
+                    <li class="list-group-item">예약한 날짜 <input type="date" name="resr_date"><br>
          
                     </li>
-                    <li class="list-group-item">입실시간 <input type="time" class="step 30"><br>
+                    <li class="list-group-item">입실시간 <input type="time" class="step 30" name="resr_time"><br>
                         
                     </li>
-                    <li class="list-group-item">퇴실시간  <input type="time" class="step 30"><br>
+                    <li class="list-group-item">퇴실시간  <input type="time" class="step 30" ><br>
                         
                     </li>
-                    <li class="list-group-item">인원 수 &nbsp; <input type="number" id="carousel_number" min=1 max=10 value="1" > </li>
+                    <li class="list-group-item">인원 수 &nbsp; <input type="number" id="carousel_number" min=1 max=10 value="1" name="resr_person"> </li>
                     <li class="list-group-item">요청사항 <br>
-                        <textarea class="col-12"></textarea></li>
+                        <textarea class="col-12"><h4>${reservation_info.resr_before_info}</h4></textarea></li>
                   </ul>
                 </div>
                 <div class="col-2"> </div>
@@ -70,7 +70,7 @@
               <div class="col">
                     <ul class="list-group">
                         <li class="list-group-item text-center" style="background-color: skyblue; ">결제 시 안내 사항</li>
-                        <textarea style="height: 220px;">인원 초과시 추가요금 / 겨울엔 수영장 이용 불가 / 야외바베큐 이용자는 요청사항 기재 / xx호텔 체크인/아웃 시간 안내 / 체크인 00:00시 / 체크아웃 00:00시
+                        <textarea style="height: 220px;"><h4>${reservation_info.resr_store_need }</h4>
                         </textarea>   
                     </ul>
                 </div>
@@ -85,21 +85,21 @@
                               <tbody>
                                 <tr>
                                   <th scope="row">1</th>
-                                  <td>싱글룸</td>
+                                  <td>${reservation_info.resr_info }</td>
                                   <td>
                                     <input type="number" id="carousel_number" min=1 max=10 value="0" >
                                   </td>  
                                 </tr>
                                 <tr>
                                   <th scope="row">2</th>
-                                  <td>더블룸</td>
+                                  <td>${reservation_info.resr_info }</td>
                                   <td>
                                     <input type="number" id="carousel_number" min=1 max=10 value="0" >
                                   </td>  
                                 </tr>
                                 <tr>
                                   <th scope="row">3</th>
-                                  <td>스위트룸</td>
+                                  <td>${reservation_info.resr_info }</td>
                                   <td>
                                     <input type="number" id="carousel_number" min=1 max=10 value="0" >
                                   </td>  
