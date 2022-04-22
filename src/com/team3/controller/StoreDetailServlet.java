@@ -35,11 +35,16 @@ public class StoreDetailServlet extends HttpServlet {
 				
 					menu_infoArr = menu_info.split("원");
 					for(int i=0; i < menu_infoArr.length; i++ ) {
-						request.setAttribute("menu1", menu_infoArr[i]);
+						String str = "menu";
+						str = str + i;
+						request.setAttribute(str, menu_infoArr[i]);
+						
 //						for문 적용 전에 단일 테스트
 //						menu_infoArr = menu_info.split("원");
 //						System.out.println(menu_infoArr[1]);
 					}
+					request.setAttribute("menu", menu_infoArr);
+					
 		
 		sVo = sDao.StoreDetail(store_name);
 		
@@ -48,6 +53,7 @@ public class StoreDetailServlet extends HttpServlet {
 //		request.setAttribute("menu2", menu_infoArr[1]);
 //		request.setAttribute("menu3", menu_infoArr[2]);
 //		request.setAttribute("menu4", menu_infoArr[3]);
+//		request.setAttribute("menu", menu_infoArr);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("store/storeDetail.jsp");
 		dispatcher.forward(request, response);
 	}

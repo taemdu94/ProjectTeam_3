@@ -158,21 +158,20 @@
 						</p>
 					</div>
 				</div>
-				<div class="col-lg-6">
+				<div class="col-lg-3">
 					<h4>메뉴</h4>
 					<table class="table">
 						<thead class="table-success">
 						<tbody>
 						<thead>
+						<c:forEach var="menuList" items="${menu}">
 							<tr>
-								<th>${menu1}</th>
-								<th>${menu2}</th>
-								<th>${menu3}</th>
-								<th>${menu4}</th>
+								<th>${menuList}</th>
+								
 							</tr>
+						</c:forEach>
 						</thead>
 						</tbody>
-
 						</thead>
 					</table>
 					<form action="./reserveLoginCheck.do">
