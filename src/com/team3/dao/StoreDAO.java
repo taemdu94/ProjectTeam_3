@@ -6,7 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import dto.StoreVO;
+import com.team3.dto.StoreVO;
 
 
 public class StoreDAO {

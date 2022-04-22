@@ -14,9 +14,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.ReservationDAO;
-import dao.StoreDAO;
-import dto.ReserMngVO;
+import com.team3.dao.ReservationDAO;
+import com.team3.dao.StoreDAO;
+import com.team3.dto.ReserMngVO;
 
 @WebServlet("/reserMng.do")
 public class reserMngServlet extends HttpServlet {

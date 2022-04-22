@@ -1,11 +1,11 @@
 package com.team3.controller;
 
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -17,12 +17,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
-
-import dao.StoreDAO;
-import dto.StoreVO;
-
-import java.nio.file.StandardCopyOption;
-import java.util.List;
+import com.team3.dao.StoreDAO;
+import com.team3.dto.StoreVO;
 
 @WebServlet("/storeInfoRegi.do")
 public class storeInfoRegiServlet extends HttpServlet {

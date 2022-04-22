@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import dto.ReserMngVO;
+import com.team3.dto.ReserMngVO;
 
 
 public class ReservationDAO {

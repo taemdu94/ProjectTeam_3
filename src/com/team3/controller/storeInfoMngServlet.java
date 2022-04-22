@@ -3,24 +3,16 @@ package com.team3.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
 
 import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.oreilly.servlet.MultipartRequest;
-import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
-
-import dao.StoreDAO;
-import dto.StoreVO;
+import com.team3.dao.StoreDAO;
+import com.team3.dto.StoreVO;
 
 @WebServlet("/storeInfoMng.do")
 public class storeInfoMngServlet extends HttpServlet {
