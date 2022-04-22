@@ -29,7 +29,7 @@ public class PaymentDAO  {
 	
 	// Create (insert) - 회원 가입
 		public int insertPayment(PaymentVO payVo) {
-			String sql = "insert into payment values(payment_LPAD(seq.nextval, 4, 0),?,sysdate,?";
+			String sql = "insert into payment values(payment_LPAD(seq.nextval, 4, 0),?,?,sysdate";
 			
 			int result = -1;
 			
@@ -60,7 +60,8 @@ public class PaymentDAO  {
 			return result;		
 		}
 	
-	
+	// Cancel - 결제취소
+		
 	
 	
 	
