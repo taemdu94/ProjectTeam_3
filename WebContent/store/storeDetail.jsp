@@ -159,7 +159,6 @@
 					</div>
 				</div>
 				<div class="col-lg-9">
-
 					<h4>메뉴</h4>
 					<table class="table">
 						<thead class="table-success">
@@ -171,19 +170,9 @@
 						</thead>
 						<tbody>
 							<tr>
-								<td>${store.menu_info}</td>
-								<td>7,000</td>
-								<td></td>
-							</tr>
-							<tr>
-								<td>짬뽕</td>
-								<td>9,000</td>
-								<td></td>
-							</tr>
-							<tr>
-								<td>탕수육</td>
-								<td>18,000</td>
-								<td></td>
+							<c:forEach var="store" items="${searchStore}">
+								<th>${store.menu_info}</th>
+							</c:forEach>
 							</tr>
 						</tbody>
 					</table>

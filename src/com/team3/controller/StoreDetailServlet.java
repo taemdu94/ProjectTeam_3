@@ -28,10 +28,21 @@ public class StoreDetailServlet extends HttpServlet {
 		StoreDAO sDao = StoreDAO.getInstance();
 		StoreVO sVo = new StoreVO();
 		
+		//메뉴 컬럼 값을 구분자를 통해 배열 형식으로 담기
+				String menu_info = sDao.StoreDetail(store_name).getMenu_info();
+				String[] menu_infoArr = new String[100];
+					menu_infoArr = menu_info.split("원");
+					for(int i=0; i < menu_infoArr.length; i++ ) {
+						System.out.println(menu_infoArr[i]);
+//						for문 적용 전에 단일 테스트
+//						menu_infoArr = menu_info.split("원");
+//						System.out.println(menu_infoArr[1]);
+					}
+		
 		sVo = sDao.StoreDetail(store_name);
 		
 		request.setAttribute("store", sVo);
-		
+		request.setAttribute("menu", menu_infoArr);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("store/storeDetail.jsp");
 		dispatcher.forward(request, response);
 	}
