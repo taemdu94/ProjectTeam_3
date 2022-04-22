@@ -26,7 +26,7 @@ public class ReserveLoginCheckServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 
 		if (session.getAttribute("login") == "1") {
-			RequestDispatcher dispatcher = request.getRequestDispatcher("./reserve/reserStore.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("./reser_request_lodging.jsp");
 			dispatcher.forward(request, response);
 		} else {
 			out.print("<script>");
