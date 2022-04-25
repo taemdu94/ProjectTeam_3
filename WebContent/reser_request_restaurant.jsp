@@ -39,7 +39,7 @@
   </head>
  
   <body>
-     <form method ="post" action="Reservation.do">
+     
     <!-- <header> -->
     
     <div class="container themed-container" style="background-color: #6ab1e4;">
@@ -50,19 +50,50 @@
         </a>    
 
         <ul class="nav nav-pills">
-            <button type="button" href="reserve" class="btn btn-secondary">예약내역</button>&nbsp;           
-            <button type="button" href="bisMember" class="btn btn-secondary">사업자</button>&nbsp;           
-            <button type="button" href="login" class="btn btn-secondary">로그인</button>&nbsp;           
-            <button type="button" href="join" class="btn btn-secondary">회원가입</button>           
+            <%
+					if (session.getAttribute("login") == "1") {
+				%>
+				<button type="button" onclick="location.href='N_reservationServlet'"
+					class="btn btn-secondary">예약내역</button>
+				&nbsp;
+				<button type="button" onclick="location.href='ProfileServlet'"
+					class="btn btn-secondary">내 정보</button>
+				&nbsp;
+				<button type="button" onclick="location.href='LogoutServlet'"
+					class="btn btn-secondary">로그아웃</button>
+				&nbsp;
+				<%
+					} else if (session.getAttribute("login") == "2") {
+				%>
+				<button type="button" href="bisMember" class="btn btn-secondary">매장관리</button>
+				&nbsp;
+				<button type="button" onclick="location.href='ProfileServlet'"
+					class="btn btn-secondary">내 정보</button>
+				&nbsp;
+				<button type="button" onclick="location.href='LogoutServlet'"
+					class="btn btn-secondary">로그아웃</button>
+				&nbsp;
+				<%
+					} else {
+				%>
+				<button type="button" onclick="location.href='member/login.jsp'"
+					class="btn btn-secondary">로그인</button>
+				&nbsp;
+				<button type="button" onclick="location.href='member/memchoice.jsp'"
+					class="btn btn-secondary">회원가입</button>
+				<%
+					}
+				%>           
         </ul>
         </header>
       </div>
       <!-- <main> -->
+      <form method ="post" action="Reservation.do">
        <div class="container">
         <div class="row">
             <div class="col">
                 <ul class="list-group">
-                    <li class="list-group-item text-center" style="background-color: skyblue;"> ${reservation_info.resr_store_name}</li>
+                    <li class="list-group-item text-center" style="background-color: skyblue;"> ${resr_store_name}</li>
                     
                     <li class="list-group-item">날짜선택 <input type="date" name="resr_date"><br>
          
@@ -72,7 +103,7 @@
                     </li>
                     <li class="list-group-item">인원 수 &nbsp; <input type="number" id="carousel_number" min=1 max=10 value="1" name="resr_person" > </li>
                     <li class="list-group-item">요청사항 <br>
-                        <textarea class="col-12"></textarea></li>
+                        <textarea class="col-12" name="resr_before_info"></textarea></li>
                   </ul>
                 </div>
                 <div class="col-2"> </div>
@@ -80,7 +111,7 @@
               <div class="col">
                     <ul class="list-group">
                         <li class="list-group-item text-center" style="background-color: skyblue; ">예약 시 안내 사항</li>
-                        <textarea style="height: 220px;"> </textarea>   
+                        <textarea style="height: 220px;" name="store_need" readonly> no dog, no children </textarea>   
                     </ul>
                 </div>
             </div>
@@ -153,9 +184,10 @@
                 </div>
                 <div class="p-5 row"> 
                     <div class="d-grid gap-2 col-3 mx-auto">
-                        <button class="btn btn-primary" type="submit">예약하기</button>
-                        
-                      </div>
+                        <button class="btn btn-primary" type="submit">예약하기</button> 
+                     </div>
+                </div>
+             </form>
 
     <!-- <footer> -->
 
@@ -170,7 +202,7 @@
         </ul>
       </footer>
     </div> 
-    </form>  
+ 
   </body>
 </html>      
 
