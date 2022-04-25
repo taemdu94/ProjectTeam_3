@@ -158,63 +158,59 @@
 						</p>
 					</div>
 				</div>
-				<div class="col-lg-9">
-
+				<div class="col-lg-3">
 					<h4>메뉴</h4>
 					<table class="table">
 						<thead class="table-success">
-							<tr>
-								<th scope="col">메뉴명</th>
-								<th scope="col">가격</th>
-								<th scope="col">비고</th>
-							</tr>
-						</thead>
 						<tbody>
-							<tr>
-								<td>${store.menu_info}</td>
-								<td>7,000</td>
-								<td></td>
-							</tr>
-							<tr>
-								<td>짬뽕</td>
-								<td>9,000</td>
-								<td></td>
-							</tr>
-							<tr>
-								<td>탕수육</td>
-								<td>18,000</td>
-								<td></td>
-							</tr>
+						<thead>
+							<c:forEach var="menuList" items="${menu}">
+								<tr>
+									<th>${menuList}</th>
+
+								</tr>
+							</c:forEach>
+						</thead>
 						</tbody>
 					</table>
+<<<<<<< HEAD
 					<form action="reser_request_restaurant.jsp">
 						<div class="p-3" style="height: 100px"></div>
 						<div class="d-grid col-3 mx-auto" style="height: 60px">
 							<button class="btn btn-primary" type="submit">예약하기</button>
 					</form>
+=======
+				</div>
+				<div class="p-3" style="height: 100px"></div>
+				<div class="d-grid col-3 mx-auto" style="height: 60px">
+					<a href="reserveLoginCheck.do?store_type=${store.store_type}">
+						<button class="btn btn-primary" type="submit" style="height: 60px; width: 180px;" >예약하기</button>
+					</a>
+>>>>>>> branch 'develop' of https://github.com/taeskkim/ProjectTeam_3.git
 				</div>
 			</div>
-
+			<!-- /.row -->
 		</div>
-		<!-- /.row -->
-	</div>
-	<!-- /.container -->
+		<!-- /.container -->
 
-	<!-- <footer> -->
-	<div class="p-3"></div>
 
-	<div class="container themed-container"
-		style="background-color: #dfe3e6;">
-		<footer
-			class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
 
-			<ul class="nav nav-pills">
-				<button type="button" class="btn btn-secondary">고객센터</button>
-				&nbsp;
-				<button type="button" class="btn btn-secondary">회사소개</button>
-				&nbsp;
-			</ul>
-		</footer>
-	</div>
+
+		<!-- <footer> -->
+		<div class="p-3"></div>
+
+		<div class="container themed-container"
+			style="background-color: #dfe3e6;">
+			<footer
+				class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+
+				<ul class="nav nav-pills">
+					<button type="button" class="btn btn-secondary">고객센터</button>
+					&nbsp;
+					<button type="button" class="btn btn-secondary">회사소개</button>
+					&nbsp;
+				</ul>
+			</footer>
+		</div>
 </body>
 </html>

@@ -103,7 +103,7 @@
 				<th>업종</th>
 				<th>주소</th>
 			</tr>
-			<c:forEach var="Store_info" items="${searchStoreList}">
+			<c:forEach var="store_info" items="${searchStoreList}">
 				<tr>
 					<td>${store_info.store_photo1}</td>
 					<td>${store_info.store_name}</td>

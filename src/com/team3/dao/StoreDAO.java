@@ -212,7 +212,7 @@ public class StoreDAO {
 	}
 
 	// Read (select) - 특정 업체 상세 조회
-	public StoreVO StoreDetail(String menu_info) {
+	public StoreVO StoreDetail(String store_name) {
 		String sql_select = "select * from store_info where store_name=?";
 
 		int result = -1;
@@ -224,7 +224,7 @@ public class StoreDAO {
 		try {
 			conn = DBManager.getConnection();
 			pstmt = conn.prepareStatement(sql_select);
-			pstmt.setString(1, menu_info);
+			pstmt.setString(1, store_name);
 			rs = pstmt.executeQuery();
 
 			// 상품 정보 획득
@@ -250,138 +250,40 @@ public class StoreDAO {
 		}
 		return sVo;
 	}
+	
+	//매장상세 메뉴 조회
+	public String getStoreInfo_Name(String store_name) {
+
+		String sql_menu_info = "select menu_info from store_info where store_name=?";
+		StoreVO sVo = null;
+
+		sVo = new StoreVO();
+		String menu;
+		
+		int result = -1;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			// 3. 쿼리문을 실행하기 위한 객체 생성
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql_menu_info);
+			pstmt.setString(1, store_name);
+			rs = pstmt.executeQuery();
+			// 4. 쿼리 실행 및 결과 처리
+			if (rs.next()) {
+				menu = rs.getString("store_name");
+				menu = menu.trim();
+				System.out.println("menu_info in getStoreInfo_Menu = " + menu);
+				return menu;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt, rs);
+		}
+		return ""; // sVo.getStore_name();
+
+	}
 }
 
-/*
- * // Read (select) - 사용자 인증, 데이터 활용 public int checkUser(String userid, String
- * pwd){ String sql_insert_pstmt =
- * "select pwd, name from member where userid=?";
- * 
- * int result = -1; String name;
- * 
- * Connection conn = null; PreparedStatement pstmt= null; ResultSet rs = null;
- * 
- * 
- * try { // 1. jdbc 드라이버 로드 : forName(className) try {
- * Class.forName("oracle.jdbc.driver.OracleDriver"); } catch
- * (ClassNotFoundException e) { e.printStackTrace(); }
- * 
- * // 2. 디비 접속을 위한 연결 객체 생성 : getConnection(url, user, password) conn =
- * DriverManager.getConnection( "jdbc:oracle:thin:@localhost:1521:orcl",
- * "ora_user", "1234");
- * 
- * // 3. 쿼리문을 실행하기 위한 객체 생성 pstmt = conn.prepareStatement(sql_insert_pstmt);
- * pstmt.setString(1, userid);
- * 
- * // 4. 쿼리 실행 및 결과 처리 rs = pstmt.executeQuery();
- * 
- * if(rs.next()) { if(rs.getString("pwd") != null &&
- * rs.getString("pwd").equals(pwd)) { //name = rs.getString("name"); result = 1;
- * } }else { // result = 0;
- * 
- * result = -1; } } catch(SQLException e) { e.printStackTrace(); } finally { try
- * { if(rs != null) rs.close(); if(pstmt != null) pstmt.close(); if (conn !=
- * null) conn.close(); } catch(SQLException e) { e.printStackTrace(); } } return
- * result;
- * 
- * }
- * 
- * public StoreVO getMember(String userid) { String sql_select_info =
- * "select * from member where userid=?"; StoreVO sVo = null;
- * 
- * sVo = new StoreVO();
- * 
- * int result = -1; String name;
- * 
- * Connection conn = null; PreparedStatement pstmt= null; ResultSet rs = null;
- * 
- * 
- * try { // 1. jdbc 드라이버 로드 : forName(className) try {
- * Class.forName("oracle.jdbc.driver.OracleDriver"); } catch
- * (ClassNotFoundException e) { e.printStackTrace(); }
- * 
- * // 2. 디비 접속을 위한 연결 객체 생성 : getConnection(url, user, password) conn =
- * DriverManager.getConnection( "jdbc:oracle:thin:@localhost:1521:orcl",
- * "ora_user", "1234");
- * 
- * // 3. 쿼리문을 실행하기 위한 객체 생성 pstmt = conn.prepareStatement(sql_select_info);
- * pstmt.setString(1, userid);
- * 
- * // 4. 쿼리 실행 및 결과 처리 rs = pstmt.executeQuery();
- * 
- * // if(rs.next()) { sVo.setName(rs.getString("name"));
- * sVo.setUserid(rs.getString("userId")); SVo.setPwd(rs.getString("pwd"));
- * SVo.setEmail(rs.getString("email")); SVo.setPhone(rs.getString("phone"));
- * SVo.setAdmin(rs.getInt("admin")); } } catch(SQLException e) {
- * e.printStackTrace(); } finally { try { if(rs != null) rs.close(); if(pstmt !=
- * null) pstmt.close(); if (conn != null) conn.close(); } catch(SQLException e)
- * { e.printStackTrace(); } } return sVo;
- * 
- * }
- * 
- * // Update (update) - 회원 정보 수정 public int updateStoreInfo(StoreVO sVo) {
- * String sql_update =
- * "update store_info set pwd=?, email=?, phone=?, admin=? where userid=?";
- * 
- * int result = -1;
- * 
- * Connection conn = null; PreparedStatement pstmt= null; ResultSet rs = null;
- * 
- * 
- * try { // 1. jdbc 드라이버 로드 : forName(className) try {
- * Class.forName("oracle.jdbc.driver.OracleDriver"); } catch
- * (ClassNotFoundException e) { e.printStackTrace(); }
- * 
- * // 2. 디비 접속을 위한 연결 객체 생성 : getConnection(url, user, password) conn =
- * DriverManager.getConnection( "jdbc:oracle:thin:@localhost:1521:orcl",
- * "ora_user", "1234");
- * 
- * // 3. 쿼리문을 실행하기 위한 객체 생성 pstmt = conn.prepareStatement(sql_update);
- * pstmt.setString(1, sVo.getPwd()); pstmt.setString(2, sVo.getEmail());
- * pstmt.setString(3, sVo.getPhone()); pstmt.setInt(4, sVo.getAdmin());
- * pstmt.setString(5, SVo.getUserid());
- * 
- * // 4. 쿼리 실행 및 결과 처리 // executeQuery(sql) - select // executeUpdate(sql) -
- * insert update delete result = pstmt.executeUpdate();
- * 
- * System.out.println(result);
- * 
- * } catch(SQLException e) { e.printStackTrace(); } finally { try { if(rs !=
- * null) rs.close(); if(pstmt != null) pstmt.close(); if (conn != null)
- * conn.close(); } catch(SQLException e) { e.printStackTrace(); } }
- * 
- * return result;
- * 
- * 
- * }
- * 
- * // Delete (delete) - 회원 삭제 public int deleteStore(StoreVO sVo) { String
- * sql_delete = "delete from store_info where userid=?";
- * 
- * int result = -1;
- * 
- * Connection conn = null; PreparedStatement pstmt= null; ResultSet rs = null;
- * 
- * 
- * try { // 1. jdbc 드라이버 로드 : forName(className) try {
- * Class.forName("oracle.jdbc.driver.OracleDriver"); } catch
- * (ClassNotFoundException e) { e.printStackTrace(); }
- * 
- * // 2. 디비 접속을 위한 연결 객체 생성 : getConnection(url, user, password) conn =
- * DriverManager.getConnection( "jdbc:oracle:thin:@localhost:1521:orcl",
- * "ora_user", "1234");
- * 
- * // 3. 쿼리문을 실행하기 위한 객체 생성 pstmt = conn.prepareStatement(sql_delete);
- * pstmt.setString(1, sVo.getUserid());
- * 
- * // 4. 쿼리 실행 및 결과 처리 // executeQuery(sql) - select // executeUpdate(sql) -
- * insert update delete result = pstmt.executeUpdate();
- * 
- * System.out.println(result);
- * 
- * } catch(SQLException e) { e.printStackTrace(); } finally { try { if(rs !=
- * null) rs.close(); if(pstmt != null) pstmt.close(); if (conn != null)
- * conn.close(); } catch(SQLException e) { e.printStackTrace(); } }
- * 
- * return result; }
- */
