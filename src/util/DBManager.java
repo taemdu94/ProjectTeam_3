@@ -26,7 +26,7 @@ public class DBManager {
 //		try {
 //			conn = DriverManager.getConnection(
 //					"jdbc:oracle:thin:@localhost:1521:xe",
-//					"tae",	"tae");
+//					"ora_user",	"1234");
 //		} catch (SQLException e) {
 //			// TODO Auto-generated catch block
 //			e.printStackTrace();
