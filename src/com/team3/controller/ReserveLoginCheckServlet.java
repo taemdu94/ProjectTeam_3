@@ -35,11 +35,11 @@ public class ReserveLoginCheckServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		
 		// 로그인 상태이면서, 업종에 맞게 페이지 이동
-		if (session.getAttribute("login") == "1" && "요식업".equals(store_type)) {
+		if (session.getAttribute("login") == "1" && "요식업".equals(store_type) || "문화시설".equals(store_type)) {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("reser_request_restaurant.jsp");
 			dispatcher.forward(request, response);
 			
-		} else if (session.getAttribute("login") == "1" &&  "숙박업".equals(store_type) || "문화시설".equals(store_type) )  {
+		} else if (session.getAttribute("login") == "1" &&  "숙박업".equals(store_type) )  {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("reser_request_lodging.jsp");
 			dispatcher.forward(request, response);
 //		} else if (session.getAttribute("login") == "1" && "문화시설".equals(store_type))  {
