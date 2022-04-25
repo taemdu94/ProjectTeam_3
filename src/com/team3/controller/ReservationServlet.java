@@ -101,6 +101,7 @@ public class ReservationServlet extends HttpServlet {
 		
 		System.out.println("s서블릿 에 들어ㅗ와ㅆ "+ rVo);
 
+		
 		int result = rDao.insertReservation(rVo);
 		
 		if (result == 1) {
