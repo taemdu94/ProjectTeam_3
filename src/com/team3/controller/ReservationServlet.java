@@ -42,6 +42,8 @@ public class ReservationServlet extends HttpServlet {
 		HttpSession session = request.getSession();	
 		System.out.println("asdfawer");
 		
+		
+		
 		String user_id = ((N_userVO) session.getAttribute("n_profile")).getUser_id();
 		System.out.println("user_id : " + user_id);
 		
