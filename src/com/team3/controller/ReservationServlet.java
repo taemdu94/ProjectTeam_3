@@ -42,21 +42,17 @@ public class ReservationServlet extends HttpServlet {
 		HttpSession session = request.getSession();	
 		System.out.println("asdfawer");
 		
-//		String user_id = ((N_userVO) session.getAttribute("n_profile")).getUser_id();
-//		System.out.println("user_id : " + user_id);
-
-		
+		String user_id = ((N_userVO) session.getAttribute("n_profile")).getUser_id();
+		System.out.println("user_id : " + user_id);
 		
 		System.out.println(request.getParameter("resr_user_name") + "user_name===================");
-		String resr_user_name = request.getParameter("resr_user_name");
+		String resr_user_name = ((N_userVO) session.getAttribute("n_profile")).getUser_name();
 		
 		System.out.println(request.getParameter("resr_store_name") + "resr_store_name===================");
 		String resr_store_name = request.getParameter("resr_store_name");
 		
 		System.out.println(request.getParameter("resr_date") + "날짜===================");
 		Date resr_date = Date.valueOf(request.getParameter("resr_date"));
-		
-	
 		
 		System.out.println(request.getParameter("resr_time") + "타임===================");
 		Date resr_time = Date.valueOf(request.getParameter("resr_time"));
@@ -77,7 +73,7 @@ public class ReservationServlet extends HttpServlet {
 		String resr_before_info = request.getParameter("resr_before_info");
 		
 		
-//		rVo.setUser_id(user_id);
+		rVo.setUser_id(user_id);
 		rVo.setResr_user_name(resr_user_name);
 		rVo.setResr_store_name(resr_store_name);
 		rVo.setResr_date(resr_date);

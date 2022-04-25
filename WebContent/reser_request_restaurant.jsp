@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.util.Enumeration" %>
 <!DOCTYPE html>
 <html lang="ko">
   <head>
@@ -24,6 +25,14 @@
     <link href="css/headers.css" rel="stylesheet">
     <link href="css/footers.css" rel="stylesheet">
     <link href="css/reset.css" rel="stylesheet">
+    <%
+    Enumeration names = session.getAttributeNames();
+    while(names.hasMoreElements()) {
+    	String name = names.nextElement().toString();
+    	String value = session.getAttribute(name).toString();
+    }
+    
+    %>
   </head>
  
   <body>
@@ -51,6 +60,7 @@
             <div class="col">
                 <ul class="list-group">
                     <li class="list-group-item text-center" style="background-color: skyblue;"> ${reservation_info.resr_store_name}</li>
+                    
                     <li class="list-group-item">날짜선택 <input type="date" name="resr_date"><br>
          
                     </li>
