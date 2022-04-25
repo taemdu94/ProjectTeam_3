@@ -142,6 +142,7 @@
 			<!-- Three columns of text below the carousel -->
 			<div class="row">
 				<div class="col-lg-3">
+				<form action="reser_request_restaurant.jsp">
 					<h3>${store.store_name}</h3>
 					<div class="d-grid gap-0">
 						<div class="col-5 bg-light border text-center">주소</div>
@@ -173,27 +174,19 @@
 						</thead>
 						</tbody>
 					</table>
-<<<<<<< HEAD
-					<form action="reser_request_restaurant.jsp">
-						<div class="p-3" style="height: 100px"></div>
-						<div class="d-grid col-3 mx-auto" style="height: 60px">
-							<button class="btn btn-primary" type="submit">예약하기</button>
 					</form>
-=======
+
 				</div>
 				<div class="p-3" style="height: 100px"></div>
 				<div class="d-grid col-3 mx-auto" style="height: 60px">
 					<a href="reserveLoginCheck.do?store_type=${store.store_type}">
 						<button class="btn btn-primary" type="submit" style="height: 60px; width: 180px;" >예약하기</button>
 					</a>
->>>>>>> branch 'develop' of https://github.com/taeskkim/ProjectTeam_3.git
 				</div>
 			</div>
 			<!-- /.row -->
 		</div>
 		<!-- /.container -->
-
-
 
 
 		<!-- <footer> -->
