@@ -62,7 +62,6 @@ public class reserMngServlet extends HttpServlet {
 		
 		//StoreDAO sDao = new StoreDAO(); 
 		StoreDAO sDao = StoreDAO.getInstance();
-		ReservationDAO	rDao = ReservationDAO.getInstance();
 		
 		String name =  sDao.getStoreInfo_Name(userid);
 		name = name.trim();
@@ -72,6 +71,7 @@ public class reserMngServlet extends HttpServlet {
 			System.out.println("getStoreInfo_Name's result(등록 성공) : " + name);
 
 			//ReservationDAO rDao = new ReservationDAO();
+			ReservationDAO rDao = ReservationDAO.getInstance();
 			
 				if(!query_date.equals("all") && query_date.equals("today") ) {
 					Date now = new Date();
@@ -92,22 +92,7 @@ public class reserMngServlet extends HttpServlet {
 			        query_date = simpleDateFormat.format(cal.getTime());
 				}
 				
-/*
-		//StoreDAO sDao = new StoreDAO(); 
-		StoreDAO sDao = StoreDAO.getInstance();
-		StoreVO sVo = new StoreVO(); 
-		
-		sVo.setUserid(userid);
-		sVo.setMenu_info(menu_info);
-		
-		int result =  sDao.insertStoreInfo_Menu(sVo);
- */
-				
-				
-				List<ReserMngVO>  Reserlist = rDao.getReserInfo(name, query_date, query_degree);
-				
-				
-				
+				List<ReserMngVO>  Reserlist =  rDao.getReserInfo(name, query_date, query_degree);
 				request.setAttribute("Reserlist", Reserlist);
 				System.out.println(Reserlist);
 			

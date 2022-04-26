@@ -114,7 +114,7 @@ function readURL(input) {
     <div class="container themed-container" style="background-color: #4598d3;">
         <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
           <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
-            <img src="images/예사날logo.png"  class="img" alt="..." height="40" width="40">&nbsp;        
+            <img src="../images/예사날logo.png"  class="img" alt="..." height="40" width="40">&nbsp;        
             <span class="fs-4">예사날</span>
           </a>
  <!--               
@@ -192,8 +192,9 @@ function readURL(input) {
 
         </div>
         <%
-        String userid = request.getParameter("user"); 
-        System.out.println("userid = " + userid);
+	        String userid = request.getParameter("user"); 
+        	/* String userid = session.getAttribute("login"); */
+	        System.out.println("userid = " + userid);
         %>
         
  
@@ -238,7 +239,7 @@ function readURL(input) {
 						  </div>
 				    </div>
 				    <div class="col-3">
-				          <img  id="preview" src="icon_y_l.png" class="img-thumbnail" alt="..." width="200" height="200" />  
+				          <img  id="preview" src="../images/예사날logo.png" class="img-thumbnail" alt="..." width="200" height="200" />  
 				    </div>
             </div>
             <div>&nbsp;</div>

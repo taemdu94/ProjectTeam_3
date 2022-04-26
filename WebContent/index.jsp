@@ -56,7 +56,7 @@
 				<%
 					} else if (session.getAttribute("login") == "2") {
 				%>
-				<button type="button" href="bisMember" class="btn btn-secondary">매장관리</button>
+				<button type="button" href="bisMember" class="btn btn-secondary"  onclick="location.href='store/store_info_regi.jsp?user=${b_profile.user_id}'">매장관리</button>
 				&nbsp;
 				<button type="button" onclick="location.href='ProfileServlet'"
 					class="btn btn-secondary">내 정보</button>

@@ -135,7 +135,7 @@ function showImage(input) {
 --> 
 
 			<ul class="nav nav-pills">
-				${b_profile.user_id}
+				
 				<%
 				System.out.println(session.getAttribute("login"));	
 				System.out.println("사업자 회원 아이디 :" + session.getAttribute("b_profile"));	
@@ -241,6 +241,8 @@ function showImage(input) {
 						  </div>
 				    </div>
 				    <div class="col-3">
+<%-- 				    	${uploadFilePath} --%>					
+<%-- 				    	${pageContext.request.contextPath}   /projectTeam3 --%>
 	 				    <img  id="preview1" src="${pageContext.request.contextPath}/images/${realFileName1}"  class="img-thumbnail" alt="..." width="200" height="200" />  
 	 				    <img  id="preview1" src="${pageContext.request.contextPath}/images/${realFileName2}"  class="img-thumbnail" alt="..." width="200" height="200" />  
 	 				    <img  id="preview1" src="${pageContext.request.contextPath}/images/${realFileName3}"  class="img-thumbnail" alt="..." width="200" height="200" />  
@@ -396,6 +398,17 @@ function showImage(input) {
               <div class="col-2">
               </div>
               <div class="col-10">
+              <!-- ${b_profile.user_id}  -->
+              
+        <%
+/*         String b_userid = request.getParameter("user"); */ 
+/*         System.out.println("store_info_mng,jsp => b_userid = " + b_userid); */
+
+/*         request.setAttribute("b_userid", b_userid); */
+
+//			String userid = session.getAttribute(b_userid);
+
+        %>
                 <input class="btn btn-primary" type="submit" value="변경">
                 &nbsp;
                 <input class="btn btn-primary" type="reset" value="취소">

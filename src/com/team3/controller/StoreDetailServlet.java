@@ -25,13 +25,13 @@ public class StoreDetailServlet extends HttpServlet {
 		
 		//상품 이름 가져와서 조회한 내용 출력
 		String store_name = request.getParameter("store_name");
-		System.out.println(store_name + "ddddddd가게이름");
+
 		StoreDAO sDao = StoreDAO.getInstance();
 		StoreVO sVo = new StoreVO();
 		
 		//메뉴 컬럼 값을 구분자를 통해 배열 형식으로 담기
 				String menu_info = sDao.StoreDetail(store_name).getMenu_info();
-				System.out.println(menu_info);
+
 				String[] menu_infoArr = new String[100];
 				
 					menu_infoArr = menu_info.split("원");
