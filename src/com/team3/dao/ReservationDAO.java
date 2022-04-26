@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.team3.dto.N_reservationVO;
 import com.team3.dto.ReservationVO;
 
 import util.DBManager;
@@ -103,52 +104,39 @@ public class ReservationDAO  {
 
 
 
-	public int insertReservation(ReservationVO rVo) {
-		System.out.println("실패1");
-		String sql = "insert into reservation_info values(?,reservation_seq.nextval,?,?,?,?,?,?,?,?,?,?)";
-		System.out.println("실패2");
-		int result = -1;
-		
+	public int insertresr_restaurant(N_reservationVO rvo) {
+		String sql = "insert into reservation_info values(?,reservation_seq.nextval,?,?,?,?,?,?,sysdate,?,'임시메뉴데이터',?)";
 		Connection conn = null;
-		PreparedStatement pstmt= null;
-		
+		PreparedStatement pstmt = null;
+
+		int result = -1;
+
 		try {
-			// 1. jdbc 드라이버 로드 : forName(className)
-			// 2. 디비 접속을 위한 연결 객체 생성 : getConnection(url, user, password)
+
 			conn = DBManager.getConnection();
-			
-			
-			// 3. 쿼리문을 실행하기 위한 객체 생성
-//			stmt = conn.createStatement();
+
 			pstmt = conn.prepareStatement(sql);
-			System.out.println("실패3");
+			pstmt.setString(1, rvo.getUser_id());
 			
+			pstmt.setString(2, rvo.getResr_user_name());
+			pstmt.setString(3, rvo.getResr_user_tel());
+			pstmt.setString(4, rvo.getResr_store_name());
+			pstmt.setDate(5, rvo.getResr_date());
+			pstmt.setDate(6, rvo.getResr_time());
+			pstmt.setString(7, rvo.getResr_store_need());
 			
-			pstmt.setString(1,rVo.getUser_id());
-			pstmt.setInt(2,rVo.getResr_number());
-			pstmt.setString(3, rVo.getResr_user_tel());
-			pstmt.setString(4, rVo.getResr_store_name());
-			pstmt.setDate(5, rVo.getResr_date());
-			pstmt.setDate(6, rVo.getResr_time());
-			pstmt.setString(7, rVo.getResr_store_need());	
-			pstmt.setDate(8, rVo.getResr_usingtime());
-			pstmt.setInt(9, rVo.getResr_person());
-			pstmt.setString(10, rVo.getResr_info());
-			pstmt.setString(11, rVo.getResr_before_info());
+			pstmt.setInt(8, rvo.getResr_person());
 			
-			System.out.println("실패4");
-			
-			
-			// 4. 쿼리 실행 및 결과 처리
-			// executeUpdate(sql)	- insert update delete	
+			pstmt.setString(9, rvo.getResr_before_info());
+
 			result = pstmt.executeUpdate();
-			
-		} catch(SQLException e) {
+
+		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			DBManager.close(conn, pstmt);
-		}		
-		return result;		
+		}
+		return result;
 	}
 
 	
