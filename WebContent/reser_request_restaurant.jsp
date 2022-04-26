@@ -83,110 +83,118 @@
         </header>
       </div>
       <!-- <main> -->
-      <form method ="post" action="Reservation.do">
-       <div class="container">
-        <div class="row">
-            <div class="col">
-                <ul class="list-group">
 
-                    <li class="list-group-item text-center" style="background-color: skyblue;"> ${store_name}</li>
-
-                    
-                    <li class="list-group-item">날짜선택 <input type="date" name="resr_date"><br>
-         
-                    </li>
-                    <li class="list-group-item">시간선택 <input type="time" class="step 30" name="resr_time"><br>
-                        
-                    </li>
-                    <li class="list-group-item">인원 수 &nbsp; <input type="number" id="carousel_number" min=1 max=10 value="1" name="resr_person" > </li>
-                    <li class="list-group-item">요청사항 <br>
-                        <textarea class="col-12" name="resr_before_info"></textarea></li>
-                  </ul>
-                </div>
-                <div class="col-2"> </div>
-
-              <div class="col">
-                    <ul class="list-group">
-                        <li class="list-group-item text-center" style="background-color: skyblue; ">예약 시 안내 사항</li>
-
-                        <textarea style="height: 220px;" name="store_need" readonly> no dog, no children </textarea>   
-
-                    </ul>
-                </div>
-            </div>
-
-            <div class="p-4"></div>
-            <div class="row">
-                <div class="col">
-                    <ul class="list-group">
-                        <li class="list-group-item" style="background-color: skyblue; width: 7rem; "> 메뉴선택</li>
-                        <table class="table table-hover">
-                            <thead>
-                                <tr>
-                                  <th scope="col">메뉴코드</th>
-                                  <th scope="col">메뉴명</th>
-                                  <th scope="col">가격</th>
-                                  <th scope="col">선택 / 수량</th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                <tr>
-                                  <th scope="row">1</th>
-                                  <td></td>
-                                  
-                                  <td><div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                    <label class="form-check-label" for="flexCheckDefault">
-                                        <input type="number" id="carousel_number" min=1 max=10 value="0" >
-                                    </label>
-                                  </div></td>
-                                </tr>
-                                <tr>
-                                  <th scope="row">2</th>
-                                  <td></td>
-                                 
-                                  <td><div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                    <label class="form-check-label" for="flexCheckDefault">
-                                        <input type="number" id="carousel_number" min=1 max=10 value="0" >
-                                    </label>
-                                  </div></td>
-                                </tr>
-                                <tr>
-                                  <th scope="row">3</th>
-                                  <td></td>
-                                  
-                                  <td><div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                    <label class="form-check-label" for="flexCheckDefault">
-                                        <input type="number" id="carousel_number" min=1 max=10 value="0" >
-                                    </label>
-                                  </div></td>
-                                </tr>
-                               </tbody>
-                        </table>
-                          <input class="form-control" type="text" value="합계 금액 : " aria-label="readonly input example" readonly>
-                      </ul>
-                    </div>
-                    <div class="col-2"> </div>
-    
-                  <div class="col">
-                        <ul class="list-group">
-                            <li class="list-group-item text-center" style="background-color: skyblue; " readonly>예약부도 시 패널티 약관</li>
-                            <textarea style="height: 220px;">
-                            </textarea>
-                            <p>동의하시겠습니까? <input class="form-check-input " type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault"></p>
-                            
-                        </ul>
-                    </div>
-                </div>
-                <div class="p-5 row"> 
-                    <div class="d-grid gap-2 col-3 mx-auto">
-                        <button class="btn btn-primary" type="submit">예약하기</button> 
-                     </div>
-                </div>
-             </form>
+<div class="container">
+	<form action="reservation.do" method="post">
+		<div class="row">
+			<div class="col">
+				<ul class="list-group">
+				<li class="list-group-item text-center" style="background-color: skyblue;">
+					<input type="text" value="${store}" name="store_type" hidden/>
+					<input type="text" value="${store_name}" name="store_name" hidden/>
+					${store_name}
+				</li>
+				<li class="list-group-item">
+					날짜선택 <input type="date" name="resr_date"><br>
+				</li>
+				<li class="list-group-item">
+					시간선택 <input type="time" class="step 30" name="resr_time"><br>        
+				</li>
+				<li class="list-group-item">
+					인원 수 &nbsp; <input type="number" id="carousel_number" min=1 max=10 value="1" name="resr_person" >
+				</li>
+				<li class="list-group-item">
+					요청사항 <br><textarea class="col-12" name="resr_store_need"></textarea></li>
+				</ul>
+			</div>
+			<div class="col-2"> </div>
+			
+			<div class="col">
+				<ul class="list-group">
+					<li class="list-group-item text-center" style="background-color: skyblue; ">
+						예약 시 안내 사항
+					</li>
+					<textarea style="height: 220px;" name="resr_before_info" readonly>가게 안내사항 입니다...</textarea>   
+				</ul>
+			</div>
+		</div>
+		
+		<div class="p-4"></div>
+		<div class="row">
+			<div class="col">
+				<ul class="list-group">
+				<li class="list-group-item" style="background-color: skyblue; width: 7rem; ">
+					메뉴선택
+				</li>
+				<table class="table table-hover">
+					<thead>
+					  <tr>
+					    <th scope="col">메뉴코드</th>
+					    <th scope="col">메뉴명</th>
+					    <th scope="col">가격</th>
+					    <th scope="col">선택 / 수량</th>
+					  </tr>
+					</thead>
+					<tbody>
+					  <tr>
+					    <th scope="row">1</th>
+					    <td></td>
+					    
+					    <td><div class="form-check">
+					      <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+					      <label class="form-check-label" for="flexCheckDefault">
+					          <input type="number" id="carousel_number" min=0 max=10 value="0" >
+					      </label>
+					    </div></td>
+					  </tr>
+					  <tr>
+					    <th scope="row">2</th>
+					    <td></td>
+					   
+					    <td><div class="form-check">
+					      <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+					      <label class="form-check-label" for="flexCheckDefault">
+					          <input type="number" id="carousel_number" min=0 max=10 value="0" >
+					      </label>
+					    </div></td>
+					  </tr>
+					  <tr>
+					    <th scope="row">3</th>
+					    <td></td>
+					    
+					    <td><div class="form-check">
+					      <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+					      <label class="form-check-label" for="flexCheckDefault">
+					          <input type="number" id="carousel_number" min=0 max=10 value="0" >
+					      </label>
+					    </div></td>
+					  </tr>
+					 </tbody>
+				</table>
+				<input class="form-control" type="text" value="합계 금액 : " aria-label="readonly input example" readonly>
+				</ul>
+			</div>
+			<div class="col-2"> </div>
+			
+			<div class="col">
+				<ul class="list-group">
+					<li class="list-group-item text-center" style="background-color: skyblue; ">
+						예약부도 시 패널티 약관
+					</li>
+					<textarea style="height: 220px;" readonly>패널티를 얻을 시 불이익을 받게 됩니다.</textarea>
+					<p>동의하시겠습니까? <input class="form-check-input " type="checkbox" value="" id="flexCheckDefault">
+					<label class="form-check-label" for="flexCheckDefault"></p>
+					            
+				</ul>
+			</div>
+		</div>
+		<div class="p-5 row"> 
+			<div class="d-grid gap-2 col-3 mx-auto">
+				<button class="btn btn-primary" type="submit">예약하기</button>
+			</div>
+		</div>
+	</form>
+</div>
 
     <!-- <footer> -->
 
