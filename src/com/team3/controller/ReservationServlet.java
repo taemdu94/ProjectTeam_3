@@ -26,8 +26,7 @@ public class ReservationServlet extends HttpServlet {
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
+
 	}
 
 
@@ -46,24 +45,36 @@ public class ReservationServlet extends HttpServlet {
 		StoreVO sVo = new StoreVO();
 		
 		HttpSession session = request.getSession();	
-		
-		
-		
+
+
+		String resr_store_name =  request.getParameter("store_name");
 		String user_id = ((N_userVO) session.getAttribute("n_profile")).getUser_id();
-
 		String resr_user_name = ((N_userVO) session.getAttribute("n_profile")).getUser_name();
-		
-		String resr_store_name = request.getParameter("store_name");
-		
-		
-		request.setAttribute("user_id", user_id);
-		request.setAttribute("resr_user_name", resr_user_name);
-		request.setAttribute("resr_store_name", resr_store_name);
 
+		request.setAttribute("store_name", resr_store_name);
+		request.setAttribute("user_id", user_id);
+		request.setAttribute("user_name", resr_user_name);
+
+		
+
+
+		System.out.println("s서블릿 에 들어ㅗ와ㅆ "+ rVo);
+		int result = rDao.insertReservation(rVo);
+		
+		if (result == 1) {
+			System.out.println("예약 등록에 성공했습니다.");
+			request.setAttribute("message", "예약 등록에 성공했습니다.");
+		} else {
+			System.out.println("예약 등록에 실패했습니다.");
+			request.setAttribute("message", "예약 등록에 실패했습니다.");
+		}
+		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("reser_request_restaurant.jsp");
 		dispatcher.forward(request, response);
 		
+
 		
+
 		
 	}
 	

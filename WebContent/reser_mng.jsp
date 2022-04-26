@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <!doctype html>
 <html lang="en">
@@ -104,12 +105,55 @@ table {
           <span class="fs-4">예사날</span>
         </a>    
 
-        <ul class="nav nav-pills">
-            <button type="button" class="btn btn-secondary">예약내역</button>&nbsp;           
-            <button type="button" class="btn btn-secondary">사업자</button>&nbsp;           
-            <button type="button" class="btn btn-secondary">로그인</button>&nbsp;           
-            <button type="button" class="btn btn-secondary">회원가입</button>           
-        </ul>
+<!--              
+          <ul class="nav nav-pills">
+              <button type="button" class="btn btn-secondary">예약내역</button>&nbsp;           
+              <button type="button" class="btn btn-secondary">사업자</button>&nbsp;           
+              <button type="button" class="btn btn-secondary">로그인</button>&nbsp;           
+              <button type="button" class="btn btn-secondary">회원가입</button>           
+          </ul>
+--> 
+
+			<ul class="nav nav-pills">
+				<!--  ${b_profile.user_id} -->
+				<%
+				System.out.println(session.getAttribute("login"));	
+				System.out.println("사업자 회원 아이디 :" + session.getAttribute("b_profile"));	
+
+					if (session.getAttribute("login") == "1") {
+				%>
+				<button type="button" onclick="location.href='N_reservationServlet'"
+					class="btn btn-secondary">예약내역</button>
+				&nbsp;
+				<button type="button" onclick="location.href='ProfileServlet'"
+					class="btn btn-secondary">내 정보</button>
+				&nbsp;
+				<button type="button" onclick="location.href='LogoutServlet'"
+					class="btn btn-secondary">로그아웃</button>
+				&nbsp;
+				<%
+					} else if (session.getAttribute("login") == "2") {
+				%>
+				<button type="button" href="bisMember" class="btn btn-secondary" onclick="location.href='store_info_regi.jsp?user=${b_profile.user_id}'">매장관리</button>
+				&nbsp;
+				<button type="button" onclick="location.href='ProfileServlet'"
+					class="btn btn-secondary">내 정보</button>
+				&nbsp;
+				<button type="button" onclick="location.href='LogoutServlet'"
+					class="btn btn-secondary">로그아웃</button>
+				&nbsp;
+				<%
+					} else {
+				%>
+				<button type="button" onclick="location.href='member/login.jsp'"
+					class="btn btn-secondary">로그인</button>
+				&nbsp;
+				<button type="button" onclick="location.href='member/memchoice.jsp'"
+					class="btn btn-secondary">회원가입</button>
+				<%
+					}
+				%>
+			</ul>
 
         </header>
       </div>
@@ -125,7 +169,7 @@ table {
 
             <div class="col-4" style="width: auto;">
               <div class="d-grid gap-2">&nbsp;
-                <button class="btn btn-primary" type="button">예약관리 서비스</button>&nbsp;
+                <button class="btn btn-primary" type="button" onclick="location.href='reserMng.do'">예약관리 서비스</button>&nbsp;
                 <button class="btn btn-secondary" type="button">매장정보 서비스</button>&nbsp;
                 <button class="btn btn-secondary" type="button">회원탈퇴</button>&nbsp;
               </div> 
@@ -141,28 +185,28 @@ table {
 
             <ul class="nav nav-tabs">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" >숙박업</a>
+                <a class="nav-link active" aria-current="page" >${storeType}</a>
               </li>
             </ul>
             &nbsp;
             &nbsp;
 
-            <form method="post" action="#" class="row g-3">
+            <form method="post" action="reserMng.do?query_date,query_degree" class="row g-3">
               <div class="col-4">
                 <label for="inputState" class="form-label">날짜별</label>
-                <select id="inputState" class="form-select">
-                  <option selected value="???">모레</option>
+                <select id="inputState" class="form-select" name="query_date">
                   <option selected value="tomorrow">내일</option>
                   <option selected value="today">오늘</option>
+                  <option selected value="all">전체</option>
                 </select>
               </div>  
               <div class="col-4">
                 <label for="inputState" class="form-label">등급별</label>
-                <select id="inputState" class="form-select">
-                  <option selected value="1">우수</option>
-                  <option selected value="-1">불량</option>
-                  <option selected value="0">일반</option>
-                  <option selected value="2">전체</option>
+                <select id="inputState" class="form-select" name="query_degree">
+                  <option selected value="2">우수</option>
+                  <option selected value="0">불량</option>
+                  <option selected value="1">일반</option>
+                  <option selected value="all">전체</option>
                 </select>
               </div>
               <div class="col-4" align="center" >
@@ -184,6 +228,7 @@ table {
                 </tr>
               </thead>
               <tbody>
+<!--               
                 <tr>
                   <th scope="row">001</th>
                   <td>정우진</td>
@@ -207,7 +252,26 @@ table {
                   <td>로얄룸</td>
                   <td>010-8020-5785</td>
                   <td>일반</td>
-                </tr>                
+                </tr>  
+-->                
+				<c:forEach var="list" items="${Reserlist}">
+					<tr>
+						<td>${list.resr_number}</td>
+						<td>${list.resr_user_name}</td>
+						<td>${list.resr_date}</td>
+						<td>${list.resr_info}</td>
+						<td>${list.resr_user_tel}</td>
+						<td> 
+						<c:choose>
+							<c:when test="${list.n_membership == 2}"> 우수 </c:when>
+							<c:when test="${list.n_membership == 1}"> 일반 </c:when>
+							<c:when test="${list.n_membership == 0}"> 불량 </c:when>
+							<c:otherwise> 없음 </c:otherwise>
+						</c:choose>
+						</td>
+					</tr>
+				</c:forEach>
+                
               </tbody>
             </table>
             
