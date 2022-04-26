@@ -143,8 +143,6 @@
 			<div class="row">
 				<div class="col-lg-3">
 
-				<form action="Reservation.do" method="post">
-
 					<h3>${store.store_name}</h3>
 					<input name="store_name" value="${store.store_name}" hidden/>
 					<div class="d-grid gap-0">
@@ -177,21 +175,19 @@
 							</c:forEach>
 						</thead>
 						</tbody>
+						</thead>
 					</table>
 
-					
-						<div class="p-3" style="height: 100px"></div>
-						<div class="d-grid col-3 mx-auto" style="height: 60px">
-							<button class="btn btn-primary" type="submit" style="height: 60px; width: 180px;" >예약하기</button>
-
-					</form>
+				
 
 				</div>
 
 				<div class="p-3" style="height: 100px"></div>
 				<div class="d-grid col-3 mx-auto" style="height: 60px">
-					<a href="reserveLoginCheck.do?store_type=${store.store_type}">
+
+					<a href="reserveLoginCheck.do?store_type=${store.store_type}&store_name=${store.store_name}">
 						<button class="btn btn-primary" type="submit" style="height: 60px; width: 180px;" >예약하기</button>
+
 					</a>
 				</div>
 			</div>

@@ -1,3 +1,4 @@
+
 package com.team3.dao;
 
 import java.sql.Connection;
@@ -10,25 +11,32 @@ import java.util.List;
 
 import com.team3.dto.N_reservationVO;
 import com.team3.dto.ReserMngVO;
+import com.team3.dto.ReservationVO;
 
 import util.DBManager;
 
-public class ReservationDAO {
-	private ReservationDAO() {}
+
+public class ReservationDAO  {
+	
+	private ReservationDAO() {	
+		
+	}
 	
 	private static ReservationDAO instance = new ReservationDAO();
 	
 	public static ReservationDAO getInstance() {
 		return instance;
+		
 	}
+
 	
-	public List<N_reservationVO> reservationList(String user_id) {
+	public List<ReservationVO> reservationList(String user_id) {
 		String sql = "select * from reservation_info where user_id=?";
 		
 		
 		int result = -1;
 		
-		List<N_reservationVO> list = new ArrayList<N_reservationVO>();
+		List<ReservationVO> list = new ArrayList<ReservationVO>();
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -46,7 +54,7 @@ public class ReservationDAO {
 
 			while(rs.next()) {
 				
-				N_reservationVO nrvo = new N_reservationVO();
+				ReservationVO nrvo = new ReservationVO();
 				
 				nrvo.setUser_id(rs.getString("user_id"));
 				nrvo.setResr_number(rs.getInt("resr_number"));
@@ -72,7 +80,7 @@ public class ReservationDAO {
 		return list;
 	}
 	
-	public int delete_reservation(N_reservationVO nrvo) {
+	public int delete_reservation(ReservationVO nrvo) {
 		String sql = "DELETE FROM reservation_info where resr_number=?";
 		
 		int result = -1;
@@ -96,7 +104,57 @@ public class ReservationDAO {
 		
 		return result;
 	}
-	
+
+
+
+
+
+	public int insertresr_restaurant(N_reservationVO rvo) {
+		String sql = "insert into reservation_info values(?,reservation_seq.nextval,?,?,?,?,?,?,sysdate,?,'임시메뉴데이터',?)";
+
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+
+		int result = -1;
+
+		try {
+
+			conn = DBManager.getConnection();
+
+			pstmt = conn.prepareStatement(sql);
+
+
+			pstmt.setString(1, rvo.getUser_id());
+
+			
+
+			//pstmt.setString(1,rVo.getUser_id());
+
+			pstmt.setString(2, rvo.getResr_user_name());
+			pstmt.setString(3, rvo.getResr_user_tel());
+			pstmt.setString(4, rvo.getResr_store_name());
+			pstmt.setDate(5, rvo.getResr_date());
+			pstmt.setDate(6, rvo.getResr_time());
+			pstmt.setString(7, rvo.getResr_store_need());
+			
+			// 4. 쿼리 실행 및 결과 처리
+			// executeUpdate(sql)	- insert update delete	
+
+			pstmt.setInt(8, rvo.getResr_person());
+			
+			pstmt.setString(9, rvo.getResr_before_info());
+
+
+			result = pstmt.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt);
+		}
+		return result;
+	}
+
 	
 	public List<ReserMngVO> getReserInfo(String store_name, String query_date, String query_degree) {
 		
@@ -195,5 +253,9 @@ public class ReservationDAO {
 		return list; 	
 	}
 	
+
 	
 }
+
+
+

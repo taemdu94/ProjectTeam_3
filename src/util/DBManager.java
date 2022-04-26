@@ -26,12 +26,29 @@ public class DBManager {
 		// 2. 디비 접속을 위한 연결 객체 생성 : getConnection(url, user, password)
 		try {
 			conn = DriverManager.getConnection(
-					"jdbc:oracle:thin:@localhost:1521:orcl",
+					"jdbc:oracle:thin:@localhost:1521:xe",
+					"tae",	"tae");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+
+		// 2. 디비 접속을 위한 연결 객체 생성 : getConnection(url, user, password)
+		try {
+			conn = DriverManager.getConnection(
+					"jdbc:oracle:thin:@localhost:1521:xe",
 					"ora_user",	"1234");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
 		
 		try {
 			Context initContext = new InitialContext();
