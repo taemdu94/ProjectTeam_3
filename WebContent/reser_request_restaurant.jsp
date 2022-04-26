@@ -43,43 +43,8 @@
         </a>    
 
         <ul class="nav nav-pills">
-<<<<<<< HEAD
-            <%
-					if (session.getAttribute("login") == "1") {
-				%>
-				<button type="button" onclick="location.href='N_reservationServlet'"
-					class="btn btn-secondary">예약내역</button>
-				&nbsp;
-				<button type="button" onclick="location.href='ProfileServlet'"
-					class="btn btn-secondary">내 정보</button>
-				&nbsp;
-				<button type="button" onclick="location.href='LogoutServlet'"
-					class="btn btn-secondary">로그아웃</button>
-				&nbsp;
-				<%
-					} else if (session.getAttribute("login") == "2") {
-				%>
-				<button type="button" href="bisMember" class="btn btn-secondary">매장관리</button>
-				&nbsp;
-				<button type="button" onclick="location.href='ProfileServlet'"
-					class="btn btn-secondary">내 정보</button>
-				&nbsp;
-				<button type="button" onclick="location.href='LogoutServlet'"
-					class="btn btn-secondary">로그아웃</button>
-				&nbsp;
-				<%
-					} else {
-				%>
-				<button type="button" onclick="location.href='member/login.jsp'"
-					class="btn btn-secondary">로그인</button>
-				&nbsp;
-				<button type="button" onclick="location.href='member/memchoice.jsp'"
-					class="btn btn-secondary">회원가입</button>
-				<%
-					}
-				%>           
-=======
-           <%
+
+           		<%
 					if (session.getAttribute("login") == "1") {
 				%>
 				<button type="button" onclick="location.href='N_reservationServlet'"
@@ -113,7 +78,7 @@
 				<%
 					}
 				%>          
->>>>>>> branch 'develop' of https://github.com/taeskkim/ProjectTeam_3.git
+
         </ul>
         </header>
       </div>
@@ -123,11 +88,9 @@
         <div class="row">
             <div class="col">
                 <ul class="list-group">
-<<<<<<< HEAD
-                    <li class="list-group-item text-center" style="background-color: skyblue;"> ${resr_store_name}</li>
-=======
+
                     <li class="list-group-item text-center" style="background-color: skyblue;"> ${store_name}</li>
->>>>>>> branch 'develop' of https://github.com/taeskkim/ProjectTeam_3.git
+
                     
                     <li class="list-group-item">날짜선택 <input type="date" name="resr_date"><br>
          
@@ -147,8 +110,6 @@
                         <li class="list-group-item text-center" style="background-color: skyblue; ">예약 시 안내 사항</li>
 
                         <textarea style="height: 220px;" name="store_need" readonly> no dog, no children </textarea>   
-
-                        <textarea style="height: 220px;" readonly >no dog , no swim</textarea>   
 
                     </ul>
                 </div>
