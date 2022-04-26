@@ -177,6 +177,7 @@
 							</c:forEach>
 						</thead>
 						</tbody>
+						</thead>
 					</table>
 
 					
@@ -191,9 +192,10 @@
 				<div class="p-3" style="height: 100px"></div>
 				<div class="d-grid col-3 mx-auto" style="height: 60px">
 					<a href="reserveLoginCheck.do?store_type=${store.store_type}">
-						<button class="btn btn-primary" type="submit" style="height: 60px; width: 180px;" >예약하기</button>
+						<button class="btn btn-primary" type="submit">예약하기</button>
 					</a>
 				</div>
+
 			</div>
 			<!-- /.row -->
 		</div>
