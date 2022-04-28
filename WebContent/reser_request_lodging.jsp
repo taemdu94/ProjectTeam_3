@@ -50,10 +50,11 @@
         <div class="row">
             <div class="col">
                 <ul class="list-group">
-                    <li class="list-group-item text-center" style="background-color: skyblue;"> 업체명</li>
-                    <li class="list-group-item">날짜선택 <input type="date" name="resr_date"><br>
-         
-                    </li>
+                    <li class="list-group-item text-center" style="background-color: skyblue;">
+					<input type="text" value="${store}" name="store_type" hidden/>
+					<input type="text" value="${store_name}" name="store_name" hidden/>
+					${store_name}
+				</li>
                     <li class="list-group-item">입실시간  <input type="time" name="resr_time"><br>
                         
                     </li>
